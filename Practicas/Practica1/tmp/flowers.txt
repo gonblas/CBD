@@ -1,0 +1,2 @@
+species number: 12 max height:  8.0000000000000000E+002 scientific name: agumurray vulgar name: carhue
+species number: 8 max height:  1.2300000000000000E+002 scientific name: pelanis vulgar name: elpela

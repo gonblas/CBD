@@ -1,0 +1,10 @@
+Ladrillos
+Bloques de concreto
+Madera
+Acero estructural
+Vidrio
+Piedra natural
+Azulejos cerámicos
+Yeso
+Aislamiento
+Cemento
