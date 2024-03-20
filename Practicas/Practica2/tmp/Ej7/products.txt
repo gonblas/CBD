@@ -1,0 +1,30 @@
+1234
+Taza de cerámica
+Taza de cerámica con diseño floral.
+10.99
+100
+10
+3456
+Juego de herramientas
+Set de herramientas profesionales de 20 piezas.
+8.25
+120
+15
+5678
+Libro de cocina
+Libro de cocina con recetas internacionales.
+15.75
+50
+5
+7890
+Caja de chocolates
+Caja surtida de chocolates belgas.
+12.50
+90
+10
+9012
+Camiseta de algodón
+Camiseta de algodón orgánico en varios colores.
+20.49
+75
+8

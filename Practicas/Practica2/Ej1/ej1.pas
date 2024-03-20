@@ -102,7 +102,7 @@ var
     i, min_value, min_index: integer;
 begin
     min_value := arr[1].code;
-    min_index := 1; // Inicializar min_index correctamente
+    min_index := 1; 
     
     for i := 1 to N do
     begin

@@ -5,7 +5,7 @@ const
 
 type
     str30 = string[30];
-    str20 = string[30];
+    str20 = string[20];
     CD_type = record
         author_code: integer;
         author_name: str30;
@@ -24,7 +24,7 @@ begin
     Assign(cd_file, '../tmp/Ej2/cds.dat');
     Rewrite(cd_file);
 
-    for i := 1 to 5 do
+    for i := 1 to 3 do
     begin
         WriteLn('Enter details for CD ', i, ':');
         Write('Author code: '); ReadLn(cd.author_code);
@@ -61,37 +61,39 @@ begin
 
     readCode(cd_file, cd);
     tot_genre := 0; tot_author := 0; tot_record_company := 0;
-    WriteLn('Author: ', cd.author_name);
-    WriteLn('Genre: ', cd.genre);
     WriteLn;
 
     while(cd.author_code <> FINISH)do
     begin
         prev_author_code := cd.author_code;
-        prev_genre := cd.genre;
-        writeln(SameText(prev_genre, cd.genre)); //Esto me da falso y no tiene sentido loco
-        while((cd.author_code = prev_author_code) and (cd.genre = prev_genre) and (cd.author_code <> FINISH))do
+        tot_author := 0;
+        WriteLn('Author: ', cd.author_name);
+        while((cd.author_code = prev_author_code))do
         begin
-            WriteLn('Disk Name: ', cd.disk_name, '   amount sold: ', cd.amount_sold); 
-            tot_genre := tot_genre + cd.amount_sold;
-            WriteLn(text_file, cd.disk_name);
-            WriteLn(text_file, cd.author_name);
-            WriteLn(text_file, cd.amount_sold);
-            readCode(cd_file, cd);
+            prev_genre := cd.genre;
+            tot_genre := 0; 
+            WriteLn('Genre: ', cd.genre);
+
+            while ((cd.author_code = prev_author_code) and (prev_genre = cd.genre)) do
+            begin
+                tot_genre := tot_genre + cd.amount_sold;
+                WriteLn('Disk Name: ', cd.disk_name, '   amount sold: ', cd.amount_sold); 
+                WriteLn(text_file, cd.disk_name);
+                WriteLn(text_file, cd.author_name);
+                WriteLn(text_file, cd.amount_sold);
+                readCode(cd_file, cd);  
+            end;
+            tot_author := tot_author + tot_genre;
+            WriteLn('Total Genre: ', tot_genre);
+            WriteLn;
         end;
-        WriteLn('Total Genre: ', tot_genre);
-        WriteLn;
-        tot_author := tot_author + tot_genre;
-        tot_genre := 0;
-        prev_genre := cd.genre;
-        if((cd.author_code <> prev_author_code) or (cd.author_code = FINISH))then
-        begin
-            WriteLn('Total Author: ', tot_author);
-            tot_record_company := tot_record_company + tot_author;
-            tot_author := 0; 
-        end;
+        WriteLn('Total Author: ', tot_author);
+        tot_record_company := tot_record_company + tot_author;
     end;
     WriteLn('Total Record Company: ', tot_record_company);
+
+    close(cd_file);
+    close(text_file);
 end;
 
 var
@@ -100,3 +102,5 @@ begin
     // createFile(cd_file);
     createReport(cd_file);
 end.
+
+
