@@ -172,7 +172,6 @@ begin
         writeln(rec_m.zone_code, ' ', rec_m.name, ' ', rec_m.meters);
     end;
 
-    // Output
 
     {Output:
     Code Zone       Name        Meters
