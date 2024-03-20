@@ -178,7 +178,7 @@ var
 begin
     // textToMaster('../tmp/Ej7/products.txt'); 
     // createDetFiles();
-    updateMaster(master, dets); 
+    // updateMaster(master, dets); 
 
     Assign(master, '../tmp/Ej7/products.dat'); reset(master);    
     while not eof(master) do
