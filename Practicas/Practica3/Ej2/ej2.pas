@@ -48,7 +48,7 @@ begin
     Assign(v_file, '../tmp/Ej2/vehicles.dat'); Reset(v_file);
     read(v_file, rec);
     freeN := rec.code;
-    if(freeN = -1) then
+    if(freeN = 0) then
         seek(v_file, filesize(v_file))
     else begin
         seek(v_file, freeN); read(v_file, rec);
@@ -128,7 +128,7 @@ begin
     //     writeln;
     // end;
 
-    {Output:
+    {Output: Utilizar el archivo de vehicles_original.dat
         Code: 1200
         Plate: AAA123
         Motor: 1.6

@@ -1,0 +1,24 @@
+1
+Camiseta
+Camiseta de algodón con estampado
+50
+2
+Pantalón
+Pantalón vaquero de hombre
+30
+3
+Vestido
+Vestido de fiesta corto
+20
+4
+Zapatos
+Zapatos de tacón negros
+40
+5
+Bufanda
+Bufanda de lana tejida a mano
+25
+6
+Gorra
+Gorra de béisbol ajustable
+35
