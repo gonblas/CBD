@@ -83,7 +83,7 @@ supuso la utilización de la técnica de lista invertida para reutilización de 
 **g)** Enumere ventajas que encuentra entre agregar y eliminar indumentaria con o sin utilización de la técnica de recuperación de espacio libre.
 
 **4.** Una disquera cuenta con un archivo conteniendo la información de discos(cd) que posee a la
-venta. De cada cd se conoce: un código único, nombre álbum, género,artista una descripción
+venta. De cada cd se conoce: un código único, nombre álbum, género, artista, una descripción
 asociada, año de edición y cantidad de copias en stock. Al archivo no tiene orden.
 
 Trimestralmente la disquera actualiza el archivo modificando los discos de los que ya no posee

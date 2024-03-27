@@ -195,10 +195,7 @@ begin
             writeln('Code: ', prod.code, ' | Name: ', prod.name, ' | Desc: ', prod.desc, ' | Stock: ', prod.stock);
     end;
 
-
-    //Inciso G
-
-    {
+    {Inciso G:
         Sin utilizacion de recuperacion de espacio libre:
         - Ventajas: Performance, solo se marca el registro como eliminado y no se mueve nada.
         - Desventajas: Si no se utiliza la tecnica de recuperacion de espacio libre siempre nos quedan registros vacios en el archivo, lo cual implica utilizar espacio de más en el disco. Al no utilizar la tecnica de recuperacion de espacio libre, el archivo crece indefinidamente.
