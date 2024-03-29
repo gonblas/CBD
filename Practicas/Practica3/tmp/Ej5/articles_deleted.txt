@@ -1,0 +1,2 @@
+Article number: 1 Description: T-Shirt Color: White Size: 1 Stock: 10 Price: 100.00
+Article number: 3 Description: Socks Color: Blue Size: 3 Stock: 20 Price: 50.00
