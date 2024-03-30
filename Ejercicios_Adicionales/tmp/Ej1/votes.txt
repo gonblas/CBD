@@ -1,0 +1,5 @@
+Amount of files processed: 3
+Total votes: 66
+Total valid votes: 45
+Total invalid votes: 9
+Total blank votes: 12

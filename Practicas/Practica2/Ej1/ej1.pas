@@ -89,6 +89,7 @@ begin
     writeln('Files created successfully.');
 end;
 
+
 procedure readCode(var det:detail_type; var data:employe_detail);
 begin
     if (not eof(det)) then
@@ -141,8 +142,8 @@ begin
     end;
     assign(master, '../tmp/Ej1/master.dat'); reset(master);
     assign(text_file, '../tmp/Ej1/employes.txt'); rewrite(text_file);
-
-    read(master, rec_m);              
+    
+    read(master, rec_m);
     minCode(rec_dets, min, dets);
     
 
