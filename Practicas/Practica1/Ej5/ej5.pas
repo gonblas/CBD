@@ -18,7 +18,7 @@ procedure addSpecies(var p_file: fileType);
 var
     flower_data: Flower;
 begin
-    seek(p_file, Filesize(p_file));
+    Reset(p_file); seek(p_file, Filesize(p_file));
     while (true) do 
     begin
         writeln('Enter the scientific name: ');
@@ -33,15 +33,16 @@ begin
         readln(flower_data.vulgar_name);
         write(p_file, flower_data);
     end;
+    close(p_file);
 end;
 
 
 procedure report(var p_file: fileType);
 var
     flower_data: Flower;
-    minHeight, max_height, species: real;
+    minHeight, max_height: real;
 begin
-    seek(p_file, 0);
+    Reset(p_file);
     minHeight := 32767; max_height := -1;
     while (not eof(p_file)) do 
     begin
@@ -55,6 +56,7 @@ begin
     writeln('Amount of species: ', FileSize(p_file));
     writeln('Min Height: ', minHeight);
     writeln('Max Height: ', max_height);
+    Close(p_file);
 end;
 
 
@@ -62,12 +64,13 @@ procedure listSpecies(var p_file: fileType);
 var
     flower_data: Flower;
 begin
-    seek(p_file, 0);
+    Reset(p_file);
     while (not eof(p_file)) do 
     begin
         read(p_file, flower_data);
         writeln('species number: ', flower_data.species_number, ' max height: ', flower_data.max_height,' scientific name: ', flower_data.scientific_name, ' vulgar name: ', flower_data.vulgar_name);
     end;
+    Close(p_file);
 end;
 
 
@@ -75,7 +78,7 @@ procedure replaceName(var p_file: fileType);
 var
     flower_data: Flower;
 begin
-    seek(p_file, 0);
+    Reset(p_file);
     while (not eof(p_file)) do 
     begin
         read(p_file, flower_data);
@@ -86,37 +89,37 @@ begin
                 write(p_file, flower_data);
             end;
     end;
+    Close(p_file);
 end;
 
 
-procedure listToTextFile(var p_file: fileType);
+procedure listToTextFile(var p_file: fileType; var text_file: text);
 var
     flower_data: Flower;
-    textFile: text;
+
 begin
-    seek(p_file, 0);
-    assign(textFile, '../tmp/flowers.txt');
-    rewrite(textFile);
+    Reset(p_file);
+    rewrite(text_file);
     while (not eof(p_file)) do 
     begin
         read(p_file, flower_data);
-        writeln(textFile, 'species number: ', flower_data.species_number, ' max height: ', flower_data.max_height,' scientific name: ', flower_data.scientific_name, ' vulgar name: ', flower_data.vulgar_name);
+        writeln(text_file, 'species number: ', flower_data.species_number, ' max height: ', flower_data.max_height,' scientific name: ', flower_data.scientific_name, ' vulgar name: ', flower_data.vulgar_name);
     end;
-    close(textFile);
+    Close(p_file);
+    Close(text_file);
 end;
 
 
 var
     p_file: fileType;
-
+    text_file: text;
 begin
     assign(p_file, '../tmp/flowers.dat');
-    rewrite(p_file);
     addSpecies(p_file); //Create file
     report(p_file);
     listSpecies(p_file);
     replaceName(p_file);
     addSpecies(p_file); //Add more species
-    listToTextFile(p_file);
-    close(p_file);
+    assign(text_file, '../tmp/flowers.txt'); 
+    listToTextFile(p_file, text_file);
 end.

@@ -14,7 +14,7 @@ type
 
 
 
-procedure text_to_bin(var bin_file: student_tfile; text_filename: string);
+procedure textToBin(var bin_file: student_tfile; text_filename: string);
 var
     student: student_type;
     text_file: text;
@@ -36,7 +36,7 @@ begin
     close(text_file);
 end;
 
-procedure list_students(var bin_file: Student_tfile);
+procedure listStudents(var bin_file: Student_tfile);
 var
     student: student_type;
     choice: char;
@@ -54,7 +54,7 @@ begin
 end;
 
 
-procedure list_students_on_file(var bin_file: Student_tfile);
+procedure listStudentsOnFile(var bin_file: Student_tfile);
 var
     student: student_type;
     text_file: text;
@@ -79,7 +79,7 @@ begin
 end;
 
 
-procedure add_student(var bin_file: Student_tfile);
+procedure addStudent(var bin_file: Student_tfile);
 var
     student: student_type;
 begin
@@ -114,7 +114,6 @@ begin
 
     found_id := false;
 
-    seek(bin_file, 0);
     while (not eof(bin_file) and (not found_id)) do
     begin
         read(bin_file, student);
@@ -144,9 +143,9 @@ end;
 var
     bin_file: Student_tfile;
 begin
-    text_to_bin(bin_file, '../tmp/students.txt');
-    list_students(bin_file);
-    list_students_on_file(bin_file);
-    add_student(bin_file);
+    textToBin(bin_file, '../tmp/students.txt');
+    listStudents(bin_file);
+    listStudentsOnFile(bin_file);
+    addStudent(bin_file);
     modifyStudent(bin_file);
 end.

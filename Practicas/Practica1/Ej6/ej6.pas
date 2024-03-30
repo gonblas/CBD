@@ -13,13 +13,13 @@ type
     book_file = file of book_record;
     
 
-procedure textToBin_file(var bin_file: book_file; text_fileName: string);
+procedure textToBinFile(var bin_file: book_file; text_filename: string);
 var
     book: book_record;
     text_file: text;
     text_line: string;
 begin
-    assign(text_file, text_fileName); 
+    assign(text_file, text_filename); 
     reset(text_file);
     rewrite(bin_file);
 
@@ -68,8 +68,10 @@ begin
     write('Enter publication year: ');
     readln(book.year);
 
-    seek(bin_file, filesize(bin_file)-1);
+    Reset(bin_file);
+    Seek(bin_file, filesize(bin_file));
     write(bin_file, book);
+    Close(bin_file);
 
     writeln('Book added successfully!');
 end;
@@ -87,7 +89,7 @@ begin
 
     foundISBN := false;  
 
-    seek(bin_file, 0);  
+    reset(bin_file); 
     while (not eof(bin_file)) do 
     begin
         read(bin_file, book);  
@@ -125,7 +127,6 @@ begin
         end;  
     end;
 
-    seek(bin_file, FileSize(bin_file));
     close(bin_file);
 
     if not foundISBN then 
@@ -142,7 +143,7 @@ var
 
 begin 
     assign(bin_file, '../tmp/libros.dat');
-    textToBin_file(bin_file, '../tmp/libros.txt');
+    textToBinFile(bin_file, '../tmp/libros.txt');
     while(true)do
         begin
             repeat
