@@ -16,8 +16,8 @@ procedure textToBin(var txt: text; var bin: employees_file);
 var
     employee: employee_type;
 begin
-    Assign(txt, '../tmp/Ej7/employees.txt'); Reset(txt);
-    Assign(bin, '../tmp/Ej7/employees.dat'); Rewrite(bin);
+    Reset(txt);
+    Rewrite(bin);
 
     employee.DNI := 0;
     write(bin, employee);
@@ -61,7 +61,7 @@ var
     rec, cur_rec: employee_type;
     deleted_pos: integer;
 begin
-    Assign(emp_file, '../tmp/Ej7/employees.dat'); Reset(emp_file);
+    Reset(emp_file);
     read(emp_file, rec);
     cur_rec.DNI := -1;
     while(not eof(emp_file) and (cur_rec.DNI <> DNI))do
@@ -87,6 +87,8 @@ var
     emp: employee_type;
 
 begin
+    Assign(txt, '../tmp/Ej7/employees.txt');
+    Assign(bin, '../tmp/Ej7/employees.dat');
     textToBin(txt, bin);
 
 
@@ -106,11 +108,12 @@ begin
     emp.salary := 20000.0;
     add_employee(bin, emp);
 
-    Assign(bin, '../tmp/Ej7/employees.dat'); Reset(bin);
+    Reset(bin);
     read(bin, emp);
     while(not eof(bin))do begin
         read(bin, emp);
         with emp do
             writeln(DNI, ' | ', name, ' | ', surname, ' | ', salary:0:2);
     end;
+    Close(bin);
 end.

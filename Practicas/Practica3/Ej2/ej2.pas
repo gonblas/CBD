@@ -13,13 +13,12 @@ type
     vehicle_file = file of vehicle_type;
 
 
-procedure init_file(var filename: string);
+procedure init_file(var v_file: vehicle_file);
 var
-    v_file: vehicle_file;
     v: vehicle_type;
     i: integer;
 begin
-    Assign(v_file, filename); Rewrite(v_file);
+    Rewrite(v_file);
 
     writeln('~~~Enter vehicle data~~~');
     v.code := 0;  //0 is the head of the deleted register stack
@@ -45,7 +44,7 @@ var
     rec: vehicle_type;
     freeN: integer;
 begin
-    Assign(v_file, '../tmp/Ej2/vehicles.dat'); Reset(v_file);
+    Reset(v_file);
     read(v_file, rec);
     freeN := rec.code;
     if(freeN = 0) then
@@ -66,7 +65,7 @@ var
     new_free: integer;
 
 begin
-    Assign(v_file, '../tmp/Ej2/vehicles.dat'); Reset(v_file);
+    Reset(v_file);
     read(v_file, rec);
     cur_rec.code:= -1;
     while(not ((cur_rec.code = code_to_delete) or eof(v_file))) do
@@ -81,6 +80,7 @@ begin
     else begin
         writeln('Vehicle not found.');
     end;
+    close(v_file);
 end;
 
 
@@ -88,11 +88,10 @@ end;
 var
     v_file: vehicle_file;
     v: vehicle_type;
-    filename: string;
 
 begin
-    // filename := '../tmp/Ej2/vehicles.dat';
-    // init_file(filename);
+    Assign(v_file, '../tmp/Ej2/vehicles.dat');
+    // init_file(v_file);
 
     // delete_vehicle(v_file, 20);
     // delete_vehicle(v_file, 1);
@@ -112,7 +111,7 @@ begin
     // v.desc := 'Another awesome car';
     // add_vehicle(v_file, v);
 
-    // Assign(v_file, '../tmp/Ej2/vehicles.dat'); Reset(v_file);
+    // Reset(v_file);
     // read(v_file, v);
     // Writeln('Head of the deleted register stack: ', v.code);
     // while(not eof(v_file)) do
@@ -127,6 +126,7 @@ begin
     //     writeln('Description: ', v.desc);
     //     writeln;
     // end;
+    // close(v_file);
 
     {Output: Utilizar el archivo de vehicles_original.dat
         Code: 1200

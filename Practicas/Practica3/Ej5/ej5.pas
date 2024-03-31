@@ -22,7 +22,7 @@ procedure init_file(var articles: sport_file);
 var
     art: sport_article_type;
 begin
-    Assign(articles, '../tmp/Ej5/articles.dat'); Rewrite(articles);
+    Rewrite(articles);
     art.nro := 1; art.desc := 'T-Shirt'; art.color := 'White'; art.size := 1; art.stock := 10; art.price := 100;
     Write(articles, art);
     art.nro := 2; art.desc := 'Short'; art.color := 'Black'; art.size := 2; art.stock := 5; art.price := 200;
@@ -37,15 +37,14 @@ begin
 end;
 
 
-procedure logical_delete(var articles: sport_file);
+procedure logical_delete(var articles: sport_file; var txt: text);
 var
     art: sport_article_type;
-    txt: text;
     nro_to_delete: integer;
 
 begin
-    Assign(articles, '../tmp/Ej5/articles.dat'); Reset(articles);
-    Assign(txt, '../tmp/Ej5/articles_deleted.txt'); Rewrite(txt);
+    Reset(articles);
+    Rewrite(txt);
     writeln('Enter the article number to delete (or -1 to finish): '); read(nro_to_delete);
 
     while(nro_to_delete <> END_NRO) do
@@ -70,12 +69,15 @@ end;
 
 var
     articles: sport_file;
+    txt: text;
     art: sport_article_type;
 
 begin
+    Assign(articles, '../tmp/Ej5/articles.dat'); 
     init_file(articles);
-    logical_delete(articles);
-    Assign(articles, '../tmp/Ej5/articles.dat'); Reset(articles);
+    Assign(txt, '../tmp/Ej5/articles_deleted.txt'); 
+    logical_delete(articles, txt);
+    Reset(articles);
     while(not eof(articles)) do
     begin
         read(articles, art);

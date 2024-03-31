@@ -24,7 +24,7 @@ var
     cd: cd_type;
     i: integer;
 begin
-    Assign(cds, '../tmp/Ej4/cds.dat'); Rewrite(cds);
+    Rewrite(cds);
 
     for i:= 1 to 5 do
     begin
@@ -47,7 +47,7 @@ var
     code: integer;
 
 begin
-    Assign(cds, '../tmp/Ej4/cds.dat'); Reset(cds);
+    Reset(cds);
     WriteLn('Enter the cd code to delete (or -1 to finish): '); read(code);
     while(code <> END_CODE) do begin
         cd.code := -1;
@@ -66,13 +66,13 @@ begin
     Close(cds);
 end;
 
-procedure compact_file(var cds: cd_file);
+procedure compact_file(var cds: cd_file; var cds_tmp: cd_file);
 var
-    cds_tmp: cd_file;
+    
     cd: cd_type;
 begin
-    Assign(cds, '../tmp/Ej4/cds.dat'); Reset(cds);
-    Assign(cds_tmp, '../tmp/Ej4/cds_compact.dat'); Rewrite(cds_tmp);
+    Reset(cds);
+    Rewrite(cds_tmp);
 
     while(not eof(cds))
     do begin
@@ -85,19 +85,20 @@ end;
 
 
 var
-    cds: cd_file;
+    cds, cds_tmp: cd_file;
     cd: cd_type;
 
 
 begin
+    Assign(cds, '../tmp/Ej4/cds.dat');
     init_file(cds);
     logical_delete(cds);
 
-
-    compact_file(cds);
-    Assign(cds, '../tmp/Ej4/cds_compact.dat'); Reset(cds);
+    Assign(cds_tmp, '../tmp/Ej4/cds_compact.dat'); 
+    compact_file(cds, cds_tmp);
+    Reset(cds_tmp);
     while(not eof(cds)) do begin
-        read(cds, cd);
+        read(cds_tmp, cd);
         WriteLn('Code: ', cd.code);
         WriteLn('Album Name: ', cd.album_name);
         WriteLn('Genre: ', cd.genre);
@@ -108,5 +109,5 @@ begin
         WriteLn('----------------------');
     end;
 
-    Close(cds);
+    Close(cds_tmp);
 end.

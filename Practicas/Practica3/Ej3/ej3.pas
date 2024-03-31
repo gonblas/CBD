@@ -14,13 +14,13 @@ type
 
     product_file = file of product_type;
 
-procedure textToBin(var t_file: text);
+procedure textToBin(var t_file: text; var bin: product_file);
 var
     bin: product_file;
     prod: product_type;
 begin
-    Assign(t_file,'../tmp/Ej3/products.txt'); Reset(t_file);
-    Assign(bin,'../tmp/Ej3/products.dat'); Rewrite(bin);
+    Reset(t_file);
+    Rewrite(bin);
 
     while not eof(t_file) do begin
         with prod do begin
@@ -42,7 +42,7 @@ var
     code, delete_pos: integer;
 
 begin
-    Assign(products, '../tmp/Ej3/products_a.dat'); Reset(products);
+    Reset(products);
     writeln('Enter the product code to delete (or -1 to finish): '); ReadLn(code);
     rec.code := -1;
 
@@ -69,7 +69,7 @@ var
     rec: product_type;
 
 begin
-    Assign(products, '../tmp/Ej3/products_a.dat'); Reset(products);
+    Reset(products);
     seek(products, FileSize(products));
     writeln('Enter the product code to add (or -1 to finish): '); ReadLn(rec.code);
 
@@ -84,13 +84,12 @@ begin
     close(products);
 end;
 
-procedure textToBin2(var t_file: text);
+procedure textToBin2(var t_file: text; var bin: product_file);
 var
-    bin: product_file;
     prod: product_type;
 begin
-    Assign(t_file,'../tmp/Ej3/products.txt'); Reset(t_file);
-    Assign(bin,'../tmp/Ej3/products_f.dat'); Rewrite(bin);
+    Reset(t_file);
+    Rewrite(bin);
 
     prod.code := 0;
     prod.stock := -1;
@@ -114,7 +113,7 @@ var
     rec: product_type;
     freeN: integer;
 begin
-    Assign(v_file, '../tmp/Ej3/products_f.dat'); Reset(v_file);
+    Reset(v_file);
     read(v_file, rec);
     freeN := rec.code;
     if(freeN = 0) then
@@ -135,7 +134,7 @@ var
     new_free: integer;
 
 begin
-    Assign(v_file, '../tmp/Ej3/products_f.dat'); Reset(v_file);
+    Reset(v_file);
     read(v_file, rec);
     cur_rec.code:= -1;
     while(not ((cur_rec.code = code_to_delete) or eof(v_file))) do
@@ -149,24 +148,27 @@ begin
         seek(v_file, 0); write(v_file, cur_rec);
     end
     else writeln('Product not found.');
-
+    close(v_file);
 end;
 
 var
-    t_file: text;
+    text_file: text;
     products: product_file;
     prod: product_type;
 
 begin
+    Assign(text_file,'../tmp/Ej3/products.txt'); 
+
     //Inciso A
-    // textToBin(t_file);
+    // Assign(products,'../tmp/Ej3/products_a.dat'); 
+    // textToBin(text_file, products);
 
     //Inciso B
     // logical_delete(products);
 
     //Inciso C
     // add_product(products);
-    // Assign(products, '../tmp/Ej3/products_a.dat'); Reset(products);
+    // Reset(products);
     // while(not eof(products)) do begin
     //     read(products, prod);
     //     if(prod.stock >= 0) then
@@ -174,7 +176,8 @@ begin
     // end;
 
     //Inciso F
-    textToBin2(t_file);
+    Assign(products,'../tmp/Ej3/products_f.dat'); 
+    textToBin2(text_file, products);
 
     //Inciso D
     delete_product(products, 2);
@@ -188,12 +191,13 @@ begin
     prod.stock := 10;
     add_product2(products, prod);
 
-    Assign(products, '../tmp/Ej3/products_f.dat'); Reset(products);
+    Reset(products);
     while(not eof(products)) do begin
         read(products, prod);
         if(prod.stock >= 0) then
             writeln('Code: ', prod.code, ' | Name: ', prod.name, ' | Desc: ', prod.desc, ' | Stock: ', prod.stock);
     end;
+    Close(products);
 
     {Inciso G:
         Sin utilizacion de recuperacion de espacio libre:

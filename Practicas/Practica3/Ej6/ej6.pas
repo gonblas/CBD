@@ -37,14 +37,14 @@ begin
 end;
 
 
-procedure compact_file(var articles: sport_file);
+procedure compact_file(var articles: sport_file; var new: sport_file);
 var
     art: sport_article_type;
     new: sport_file;
 
 begin
-    Assign(articles, '../tmp/Ej6/articles.dat'); Reset(articles);
-    Assign(new, '../tmp/Ej6/articles.tmp'); Rewrite(new);
+    Reset(articles);
+    Rewrite(new);
 
     while(not eof(articles)) do
     begin
@@ -64,12 +64,14 @@ end;
 
 
 var
-    articles: sport_file;
+    articles, new sport_file;
     art: sport_article_type;
 
 begin
-    compact_file(articles);
-    Assign(articles, '../tmp/Ej6/articles.dat'); Reset(articles);
+    Assign(articles, '../tmp/Ej6/articles.dat'); 
+    Assign(new, '../tmp/Ej6/articles.tmp'); 
+    compact_file(articles, new); 
+    Reset(articles);
     while(not eof(articles)) do
     begin
         read(articles, art);

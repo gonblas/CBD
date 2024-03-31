@@ -19,14 +19,13 @@ type
     species_file = file of specie_type;
 
 
-procedure init_file(filename: str30);
+procedure init_file(var species: species_file);
 var
-    species: species_file;
     i: integer;
     specie: specie_type;
 
 begin
-    Assign(species, filename); Rewrite(species);
+    Rewrite(species);
     writeln('~~~Enter species data~~~');
     for i:= 1 to 5 do
     begin
@@ -52,7 +51,7 @@ var
     code, delete_pos: integer;
 
 begin
-    Assign(species, '../tmp/Ej1/species.dat'); Reset(species);
+    Reset(species);
     writeln('Enter the specie code to delete (or -1 to finish): '); ReadLn(code);
     rec.code := -1;
 
@@ -74,14 +73,14 @@ begin
 end;
 
 
-procedure compact_file(var species: species_file);
+procedure compact_file(var species: species_file; var compact: species_file);
 var
     compact: species_file;
     data: specie_type;
 
 begin
-    Assign(species, '../tmp/Ej1/species.dat'); Reset(species);
-    Assign(compact, '../tmp/Ej1/species_compact.dat'); Rewrite(compact);
+    Reset(species);
+    Rewrite(compact);
 
     while(not eof(species))do
     begin
@@ -99,7 +98,7 @@ var
     rec: specie_type;
     code, delete_pos: integer;
 begin
-    Assign(species, '../tmp/Ej1/species_b.dat'); Reset(species);
+    Reset(species);
     writeln('Enter the specie code to delete (or -1 to finish): '); ReadLn(code);
     rec.code := -1;
 
@@ -128,13 +127,15 @@ var
     data: specie_type;
 
 begin
-    // init_file('../tmp/Ej1/species.dat');
+    Assign(species, '../tmp/Ej1/species.dat');
+    // init_file(species);
 
     //Inciso A
     logical_delete(species);
-    compact_file(species);
+    Assign(compact, '../tmp/Ej1/species_compact.dat'); 
+    compact_file(species, compact);
 
-    Assign(compact, '../tmp/Ej1/species_compact.dat'); Reset(compact);
+    Reset(compact);
     while(not eof(compact))do
     begin
         read(compact, data);
@@ -146,12 +147,14 @@ begin
         writeln('Zone: ', data.zone);
         writeln;
     end;
+    close(compact);
 
     
 
     //Inciso B
+    Assign(species, '../tmp/Ej1/species_b.dat'); 
     phisical_delete(species);
-    Assign(species, '../tmp/Ej1/species_b.dat'); Reset(species);
+    Reset(species);
     while(not eof(species))do
     begin
         read(species, data);
@@ -163,7 +166,7 @@ begin
         writeln('Zone: ', data.zone);
         writeln;
     end;
-
+    close(species);
 
     {Output: Al borrar el codigo 1 y 3 del archivo species_original.dat
         Code: 2
