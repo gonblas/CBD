@@ -20,7 +20,6 @@ var
     i: integer;
     pop_rec: population_type;
 begin
-    Assign(pop_file, '../tmp/Ej5/population_data.dat');
     Rewrite(pop_file);
     
     for i := 1 to 3 do
@@ -53,7 +52,7 @@ var
     tot_children_district, tot_adults_district, tot_children_town, tot_adults_town: integer;    
     prev_district, prev_town: str30;
 begin
-    Assign(pop_file, '../tmp/Ej5/population_data.dat'); reset(pop_file);
+    reset(pop_file);
 
     readCode(pop_file, pop_rec);
     tot_children_district := 0; tot_adults_district := 0;
@@ -94,6 +93,7 @@ end;
 var
     pop_file: population_file_type;
 begin
+    Assign(pop_file, '../tmp/Ej5/population_data.dat');
     // createFile(pop_file);
     createReport(pop_file);
 end.

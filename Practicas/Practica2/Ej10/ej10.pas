@@ -26,13 +26,11 @@ type
     details = array[1..N] of detail_file;
 
 
-procedure createMaster();
+procedure createMaster(var master: master_file);
 var
-    master: master_file;
     rec_m: product_master;
     i: integer;
 begin
-    assign(master, '../tmp/Ej10/master.dat');
     rewrite(master);
 
     for i := 1 to 3 do 
@@ -55,17 +53,14 @@ begin
 end;
 
 
-procedure createDetails();
+procedure createDetails(var dets: details);
 var
-    dets: details;
     rec_d: product_detail;
     i, detailNumber: Integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej10/det', IntToStr(i), '.dat'));
         rewrite(dets[i]);
-    end;
+    
     detailNumber := 1;
 
 
@@ -138,11 +133,11 @@ begin
     // Init files
     for i:= 1 to N
     do begin
-        assign(dets[i], concat('../tmp/Ej10/det', IntToStr(i), '.dat')); reset(dets[i]);
+        reset(dets[i]);
         readCode(dets[i], rec_dets[i]);
     end;
     WriteLn('Updating master file');    
-    assign(master, '../tmp/Ej10/master.dat'); reset(master);
+    reset(master);
 
 
     read(master, rec_m);              
@@ -182,22 +177,25 @@ end;
 var
     master: master_file;
     dets: details;
-
+    i: integer;
 
 begin
-    // createMaster();
-    // createDetails();
+    assign(master, '../tmp/Ej10/master.dat');
+    // createMaster(master);
+    for i:= 1 to N do
+        assign(dets[i], concat('../tmp/Ej10/det', IntToStr(i), '.dat'));
+    // createDetails(dets);
     // updateMaster(master, dets); 
 
     WriteLn;
     WriteLn;
-    // Assign(master, '../tmp/Ej10/master.dat'); reset(master);
-    // while not eof(master) do
-    // begin
-    //     read(master, product);
-    //     writeln(product.code, ' | ', product.name, ' | ', product.desc, ' | ', product.price, ' | ', product.sold, ' | ', product.max_sold);
-    // end;
-    // close(master);
+    reset(master);
+    while not eof(master) do
+    begin
+        read(master, product);
+        writeln(product.code, ' | ', product.name, ' | ', product.desc, ' | ', product.price, ' | ', product.sold, ' | ', product.max_sold);
+    end;
+    close(master);
 
 
     {Output:

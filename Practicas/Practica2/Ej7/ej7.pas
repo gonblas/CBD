@@ -29,14 +29,12 @@ type
     details = array[1..N] of detail_file;
 
 
-procedure textToMaster(text_filename: str40);
+procedure textToMaster(var text_file: text; var master: master_file);
 var
     product: product_data;  
-    text_file: text;
-    master: master_file;
 begin
-    Assign(text_file, text_filename); reset(text_file);
-    Assign(master, '../tmp/Ej7/products.dat'); rewrite(master);
+    reset(text_file);
+    rewrite(master);
     while not eof(text_file) do
     begin
         with product do
@@ -55,17 +53,14 @@ begin
     close(master);
 end;
 
-procedure createDetFiles();
+procedure createDetFiles(var dets: details);
 var
-    dets: details;
     rec_d: sale_data;   
     i, detailNumber: Integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej7/det', IntToStr(i), '.dat'));
         rewrite(dets[i]);
-    end;
+
 
     WriteLn('Creating detail files...' );
 
@@ -174,13 +169,19 @@ end;
 var
     master: master_file;
     dets: details;
+    text_file: text;
     product: product_data;  
+    i: integer;
 begin
-    // textToMaster('../tmp/Ej7/products.txt'); 
-    // createDetFiles();
+    Assign(text_file, '../tmp/Ej7/products.txt');
+    Assign(master, '../tmp/Ej7/products.dat'); 
+    // textToMaster(text_file, master); 
+    for i := 1 to N do
+        assign(dets[i], concat('../tmp/Ej7/det', IntToStr(i), '.dat'));
+    // createDetFiles(dets);
     // updateMaster(master, dets); 
 
-    Assign(master, '../tmp/Ej7/products.dat'); reset(master);    
+    reset(master);    
     while not eof(master) do
     begin
         read(master, product);
@@ -195,6 +196,7 @@ begin
             WriteLn('------------------------');
         end;
     end; 
+    close(master);
 
     {Output:
         Code: 1234

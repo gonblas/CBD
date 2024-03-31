@@ -30,17 +30,14 @@ type
 
 
 
-procedure createDetFiles();
+procedure createDetFiles(var dets: details);
 var
-    dets: details;
     rec_d: aqueduct_detail;
     i, detailNumber: Integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej8/det', IntToStr(i), '.dat'));
         rewrite(dets[i]);
-    end;
+
 
     for i := 1 to 5 do
     begin
@@ -110,22 +107,20 @@ begin
 end;
 
 
-procedure initMaster(master_filename: str30; var dets: details);
+procedure initMaster(var master: master_file; var dets: details; text_file: text);
 var
     rec_dets: det_array_type;
     min, last_aqueduct: aqueduct_detail;
     rec_m: aqueduct_master;
     i: integer;
-    text_file: text;
-    master: master_file;
 begin
     // Init files
     for i:= 1 to N
     do begin
-        assign(dets[i], concat('../tmp/Ej8/det', IntToStr(i), '.dat')); reset(dets[i]); readCode(dets[i], rec_dets[i]);
+        reset(dets[i]); readCode(dets[i], rec_dets[i]);
     end;
 
-    Assign(text_file, '../tmp/Ej8/aqueducts.txt'); rewrite(text_file);    
+    rewrite(text_file);    
 
     assign(master, master_filename); rewrite(master);
     minCode(rec_dets, min, dets);
@@ -157,14 +152,20 @@ end;
 var
     master: master_file;
     dets: details;
+    text_file: text;
     rec_m: aqueduct_master;
+    i: integer;
 
 begin
-    createDetFiles();
+    for i := 1 to N do
+        assign(dets[i], concat('../tmp/Ej8/det', IntToStr(i), '.dat'));
+    
+    createDetFiles(dets);
+    Assign(text_file, '../tmp/Ej8/aqueducts.txt'); 
+    Assign(master, '../tmp/Ej8/master.dat');
+    initMaster(master, dets, text_file);
 
-    initMaster('../tmp/Ej8/master.dat', dets);
-
-    assign(master, '../tmp/Ej8/master.dat'); reset(master);
+    reset(master);
     WriteLn('Code Zone    Name                Meters');
     while(not eof(master))do
     begin
@@ -174,10 +175,10 @@ begin
 
 
     {Output:
-    Code Zone       Name        Meters
-    1               LP          20
-    7               CB          100
-    22              LH          300
+        Code Zone       Name        Meters
+        1               LP          20
+        7               CB          100
+        22              LH          300
     }
 
     close(master);

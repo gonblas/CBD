@@ -25,7 +25,7 @@ procedure create_master_file(var master: master_file);
 var
     waiter: waiter_type;
 begin
-    Assign(master, '../tmp/Ej6/master.dat'); rewrite(master); 
+    rewrite(master); 
     
     writeln('Enter waiter code (or -1 to finish): '); readln(waiter.code);
     while (waiter.code <> FINISH) do
@@ -47,15 +47,14 @@ begin
 end;
 
 
-procedure compactFile(var master: master_file);
+procedure compactFile(var master: master_file; var compact: compact_file);
 var
-    compact: compact_file;
     waiter: waiter_type;
     compact_waiter: waiter_compact_type;    
 
 begin
-    Assign(master, '../tmp/Ej6/master.dat'); reset(master);
-    Assign(compact, '../tmp/Ej6/compact.dat'); rewrite(compact);
+    reset(master);
+    rewrite(compact);
     readCode(master, waiter);
     while (waiter.code <> MAX_VALUE) do
     begin
@@ -80,11 +79,12 @@ var
     waiter_compact: waiter_compact_type;    
 
 begin
+    Assign(master, '../tmp/Ej6/master.dat'); 
     // create_master_file(master); 
-    compactFile(master);
+    Assign(compact, '../tmp/Ej6/compact.dat');
+    compactFile(master, compact);
 
-    Assign(compact, '../tmp/Ej6/compact.dat'); reset(compact); 
-
+    reset(compact); 
     while (not eof(compact)) do
     begin
         read(compact, waiter_compact);
@@ -92,8 +92,8 @@ begin
     end;
     close(compact); 
     {Output:
-    Waiter code: 1 Total: 250.00
-    Waiter code: 3 Total: 600.00
-    Waiter code: 7 Total: 2450.00
+        Waiter code: 1 Total: 250.00
+        Waiter code: 3 Total: 600.00
+        Waiter code: 7 Total: 2450.00
     }  
 end.

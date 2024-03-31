@@ -37,12 +37,11 @@ var
     i, detailNumber: integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej3/det', IntToStr(i), '.dat')); rewrite(dets[i]);
-    end;
+        rewrite(dets[i]);
+
     
     WriteLn('Enter details for 5 footwear items');  
-    assign(master, '../tmp/Ej3/master.dat'); rewrite(master);
+    rewrite(master);
 
 
     for i := 1 to 2 do // 5 footwear items
@@ -82,10 +81,10 @@ begin
     end;
 
     // Close files
-    close(master);
     for i := 1 to N do
         close(dets[i]);
 
+    close(master);
     writeln('Files created successfully.');
 end;
 
@@ -147,11 +146,10 @@ begin
     // Init files
     for i:= 1 to N
     do begin
-        assign(dets[i], concat('../tmp/Ej3/det', IntToStr(i), '.dat')); reset(dets[i]);
-        readCode(dets[i], rec_dets[i]);
+        reset(dets[i]); readCode(dets[i], rec_dets[i]);
     end;
-    assign(master, '../tmp/Ej3/master.dat'); reset(master);
-    assign(text_file, '../tmp/Ej3/footwearoutofstock.txt'); rewrite(text_file);
+    reset(master);
+    rewrite(text_file);
 
     read(master, rec_m);              
     minCode(rec_dets, min, dets); 
@@ -202,9 +200,15 @@ end;
 var
     master: master_type;
     dets: details;  
-
+    text_file: text;
+    i: integer;
 
 begin
+    for i:= 1 to N do
+        assign(dets[i], concat('../tmp/Ej3/det', IntToStr(i), '.dat')); 
+    
+    assign(master, '../tmp/Ej3/master.dat'); 
+    assign(text_file, '../tmp/Ej3/footwearoutofstock.txt'); 
     createFiles(master, dets);
-    updateMaster(master, dets);
+    updateMaster(master, dets, text_file);
 end.

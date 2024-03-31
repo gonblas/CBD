@@ -32,17 +32,14 @@ type
     details = array[1..N] of detail_file;
     det_array_type = array[1..N] of film_detail;
 
-procedure createDetFiles();
+procedure createDetFiles(var dets: details;);
 var
-    dets: details;
     rec_d: film_detail;
     i, detailNumber: Integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej4/det', IntToStr(i), '.dat'));
         rewrite(dets[i]);
-    end;
+
 
     for i := 1 to 5 do
     begin
@@ -116,7 +113,7 @@ begin
 end;
 
 
-procedure initMaster(master_filename: str30; var dets: details);
+procedure initMaster(master: master_file;; var dets: details);
 var
     rec_dets: det_array_type;
     min: film_detail;
@@ -128,9 +125,9 @@ begin
     // Init files
     for i:= 1 to N
     do begin
-        assign(dets[i], concat('../tmp/Ej4/det', IntToStr(i), '.dat')); reset(dets[i]); readCode(dets[i], rec_dets[i]);
+        reset(dets[i]); readCode(dets[i], rec_dets[i]);
     end;
-    assign(master, master_filename); rewrite(master);
+    rewrite(master);
     minCode(rec_dets, min, dets);
 
 
@@ -161,13 +158,17 @@ var
     master: master_file;
     dets: details;
     rec_m: film_master;
+    i: integer;
 
 begin
-    createDetFiles();
+    for i:= 1 to N do
+        assign(dets[i], concat('../tmp/Ej4/det', IntToStr(i), '.dat'));
 
-    initMaster('../tmp/Ej4/master.dat', dets);
+    createDetFiles(dets);
+    assign(master, '../tmp/Ej4/master.dat'); 
+    initMaster(master, dets);
 
-    assign(master, '../tmp/Ej4/master.dat'); reset(master);
+    reset(master);
     writeln('Code   Name   Genre   Director   Duration   Audience');
     while(not eof(master))do
     begin
@@ -175,6 +176,7 @@ begin
         writeln(rec_m.code, ' ', rec_m.name, ' ', rec_m.genre, ' ', rec_m.director, ' ', rec_m.duration, ' ', rec_m.audience);
     end;
 
+    close(master);
 
     {Output:
     Code    Name                Genre               Director            Duration    Audience
@@ -184,5 +186,4 @@ begin
     300     Titanic             Drama               James Cameron       1           200
     }
 
-    close(master);
 end.

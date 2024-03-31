@@ -1,1 +1,0 @@
-        writeln(cd.author_code);

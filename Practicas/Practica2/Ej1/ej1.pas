@@ -29,21 +29,15 @@ type
     int_array_type = array[1..N] of integer;
 
 
-procedure createFiles();
+procedure createFiles(var master: master_type; var dets: details);
 var
-    master: file of employe_master;
-    dets: array[1..N] of file of employe_detail;
     rec_m: employe_master;
     rec_d: employe_detail;
     i, detailNumber: Integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej1/det', IntToStr(i), '.dat'));
         rewrite(dets[i]);
-    end;
     
-    assign(master, '../tmp/Ej1/master.dat');
     rewrite(master);
 
     for i := 1 to 5 do // For each of the 5 master employees
@@ -126,22 +120,20 @@ begin
 end;
 
 
-procedure updateMaster(var master: master_type; var dets: details);
+procedure updateMaster(var master: master_type; var dets: details; var text_file: text;);
 var
     rec_m: employe_master;
     rec_dets: det_array_type;
     min: employe_detail;
     aux, i: integer;
-    text_file: text;
 begin
     // Init files
     for i:= 1 to N
     do begin
-        assign(dets[i], concat('../tmp/Ej1/det', IntToStr(i), '.dat')); reset(dets[i]);
-        readCode(dets[i], rec_dets[i]);
+        reset(dets[i]); readCode(dets[i], rec_dets[i]);
     end;
-    assign(master, '../tmp/Ej1/master.dat'); reset(master);
-    assign(text_file, '../tmp/Ej1/employes.txt'); rewrite(text_file);
+    reset(master);
+    rewrite(text_file);
     
     read(master, rec_m);
     minCode(rec_dets, min, dets);
@@ -181,11 +173,18 @@ var
     master: master_type;
     dets: details;
     rec_m: employe_master;
+    text_file: text;
 
 begin
-    createFiles();
-    updateMaster(master, dets);
-    assign(master, '../tmp/Ej1/master.dat'); reset(master);
+    for i := 1 to N do
+        assign(dets[i], concat('../tmp/Ej1/det', IntToStr(i), '.dat'));
+
+    assign(master, '../tmp/Ej1/master.dat');
+    assign(text_file, '../tmp/Ej1/employes.txt'); 
+
+    createFiles(master, dets);
+    updateMaster(master, dets, text_file);
+    reset(master);
     writeln('Code   Fullname   Address   Children   Phone Number   Available Days');
     while(not eof(master))do
     begin

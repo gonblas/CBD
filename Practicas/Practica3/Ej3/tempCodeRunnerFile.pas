@@ -1,1 +1,0 @@
-if(prod.stock >= 0) then

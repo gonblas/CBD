@@ -48,16 +48,15 @@ begin
         data.author_code := FINISH;
 end;
 
-procedure createReport(var cd_file: cd_file_type);
+procedure createReport(var cd_file: cd_file_type; var text_file: text;);
 var 
     cd: CD_type;
-    text_file: text;
     tot_genre, tot_author, tot_record_company: integer;
     prev_author_code: integer;
     prev_genre: str20;
 begin
-    Assign(cd_file, '../tmp/Ej2/cds.dat'); reset(cd_file);
-    Assign(text_file, '../tmp/Ej2/cds_report.txt'); rewrite(text_file);
+    reset(cd_file);
+    rewrite(text_file);
 
     readCode(cd_file, cd);
     tot_genre := 0; tot_author := 0; tot_record_company := 0;
@@ -98,9 +97,12 @@ end;
 
 var
     cd_file: cd_file_type;
+    text_file: text;
 begin
+    Assign(cd_file, '../tmp/Ej2/cds.dat');
+    Assign(text_file, '../tmp/Ej2/cds_report.txt');
     // createFile(cd_file);
-    createReport(cd_file);
+    createReport(cd_file, text_file);
 end.
 
 

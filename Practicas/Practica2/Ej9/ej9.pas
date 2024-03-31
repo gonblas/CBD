@@ -32,17 +32,14 @@ type
 
 
 
-procedure createDetFiles();
+procedure createDetFiles(var dets: details);
 var
-    dets: details;
     rec_d: runners_detail;
     i, detailNumber: Integer;
 begin
     for i := 1 to N do
-    begin
-        assign(dets[i], concat('../tmp/Ej9/det', IntToStr(i), '.dat'));
         rewrite(dets[i]);
-    end;
+
 
     for i := 1 to 5 do
     begin
@@ -108,21 +105,20 @@ begin
 end;
 
 
-procedure initMaster(master_filename: str30; var dets: details);
+procedure initMaster(var master: master_file; var dets: details);
 var
     rec_dets: det_array_type;
     min: runners_detail;
     rec_m: runners_master;
     i: integer;
-    master: master_file;
 begin
     // Init files
     for i:= 1 to N
     do begin
-        assign(dets[i], concat('../tmp/Ej9/det', IntToStr(i), '.dat')); reset(dets[i]); readCode(dets[i], rec_dets[i]);
+        reset(dets[i]); readCode(dets[i], rec_dets[i]);
     end;   
 
-    assign(master, master_filename); rewrite(master);
+    rewrite(master);
     minCode(rec_dets, min, dets);
 
     while(min.DNI <> MAX_VALUE) do
@@ -153,13 +149,17 @@ var
     master: master_file;
     dets: details;
     rec_m: runners_master;
+    i: integer;
 
 begin
-    createDetFiles();
+    for i := 1 to N do
+        assign(dets[i], concat('../tmp/Ej9/det', IntToStr(i), '.dat'));
+    createDetFiles(dets);
 
-    initMaster('../tmp/Ej9/master.dat', dets);
+    Assign(master, '../tmp/Ej9/master.dat');
+    initMaster(master, dets);
 
-    assign(master, '../tmp/Ej9/master.dat'); reset(master);
+    reset(master);
     WriteLn('DNI   Surname    Name     Meters    Wins');
     while(not eof(master))do
     begin
@@ -167,6 +167,7 @@ begin
         writeln(rec_m.DNI, ' ', rec_m.surname, ' ', rec_m.name, ' ', rec_m.kilometers:0:2, ' ', rec_m.wins);
     end;
 
+    close(master);
 
     {Output:
         DNI     Surname     Name        Meters      Wins
@@ -176,5 +177,4 @@ begin
         12      Messi       Lionel      2300.00     2
     }
 
-    close(master);
 end.
