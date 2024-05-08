@@ -89,8 +89,7 @@ Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calc
 
 ## **_Técnica de resolución de colisiones: Saturación progresiva encadenada con área de desborde separada._**
 
-**6.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las siguientes operaciones: +59, +25, -39, -1. Función de dispersión: **Clave MOD 6**.
-Técnica de resolución de colisiones: Saturación progresiva encadenada con área de desborde separada. **Justifique brevemente cada operación.**
+**6.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las siguientes operaciones: +59, +25, -39, -1. Función de dispersión: **Clave MOD 6**. Técnica de resolución de colisiones: Saturación progresiva encadenada con área de desborde separada. **Justifique brevemente cada operación.**
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
