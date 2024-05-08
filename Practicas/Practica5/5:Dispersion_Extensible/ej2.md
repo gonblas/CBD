@@ -9,3 +9,143 @@
 | 9   | Bóxer          | 01010100 | 10  | Gran dánes   | 01100001 |
 
 ## Resolución
+
+- **Op 1:**
+
+|     |                 |               |
+| :-- | :-------------- | :------------ |
+|     | Valor Tabla = 0 |               |
+| 0   | Dirección       | (0) Chow chow |
+
+- **Op 2:**
+
+|     |                 |                              |
+| :-- | :-------------- | :--------------------------- |
+|     | Valor Tabla = 0 |                              |
+| 0   | Dirección       | (0) Chow chow $\quad$ Beagle |
+
+- **Op 3:** Overflow en el registro apuntado por 0.
+
+|     |                 |                                      |
+| :-- | :-------------- | :----------------------------------- |
+|     | Valor Tabla = 1 |                                      |
+| 0   | Dirección       | (1) Beagle                           |
+| 1   | Dirección       | (1) Chow chow $\quad$ Border terrier |
+
+- **Op 4:** Overflow en el registro apuntado por 1.
+
+|     |                 |                                    |
+| :-- | :-------------- | :--------------------------------- |
+|     | Valor Tabla = 2 |                                    |
+| 00  | Dirección       | (1) Beagle                         |
+| 01  | Dirección       | (2) Border terrier                 |
+| 10  | Dirección       | (1) Beagle                         |
+| 11  | Dirección       | (2) Chow chow $\quad$ Border Colie |
+
+- **Op 5:** Overflow en el registro apuntado por 11.
+
+|     |                 |                                    |
+| :-- | :-------------- | :--------------------------------- |
+|     | Valor Tabla = 3 |                                    |
+| 000 | Dirección       | (1) Beagle                         |
+| 001 | Dirección       | (2) Border terrier                 |
+| 010 | Dirección       | (1) Beagle                         |
+| 011 | Dirección       | (3) Samoyedo                       |
+| 100 | Dirección       | (1) Beagle                         |
+| 101 | Dirección       | (2) Border terrier                 |
+| 110 | Dirección       | (1) Beagle                         |
+| 111 | Dirección       | (3) Chow chow $\quad$ Border Colie |
+
+- **Op 6:**
+
+|     |                 |                                    |
+| :-- | :-------------- | :--------------------------------- |
+|     | Valor Tabla = 3 |                                    |
+| 000 | Dirección       | (1) Beagle                         |
+| 001 | Dirección       | (2) Border terrier                 |
+| 010 | Dirección       | (1) Rottweiler                     |
+| 011 | Dirección       | (3) Samoyedo                       |
+| 100 | Dirección       | (1) Beagle                         |
+| 101 | Dirección       | (2) Border terrier                 |
+| 110 | Dirección       | (1) Beagle                         |
+| 111 | Dirección       | (3) Chow chow $\quad$ Border Colie |
+
+- **Op 7:**
+
+|     |                 |                                    |
+| :-- | :-------------- | :--------------------------------- |
+|     | Valor Tabla = 3 |                                    |
+| 000 | Dirección       | (1) Beagle $\quad$ Chihuahua       |
+| 001 | Dirección       | (2) Border terrier                 |
+| 010 | Dirección       | (1) Rottweiler                     |
+| 011 | Dirección       | (3) Samoyedo                       |
+| 100 | Dirección       | (1) Beagle                         |
+| 101 | Dirección       | (2) Border terrier                 |
+| 110 | Dirección       | (1) Beagle                         |
+| 111 | Dirección       | (3) Chow chow $\quad$ Border Colie |
+
+- **Op 8:** Overflow en el registro apuntado por 111.
+
+|      |                 |                                 |
+| :--- | :-------------- | :------------------------------ |
+|      | Valor Tabla = 4 |                                 |
+| 0000 | Dirección       | (1) Beagle $\quad$ Chihuahua    |
+| 0001 | Dirección       | (2) Border terrier              |
+| 0010 | Dirección       | (1) Rottweiler                  |
+| 0011 | Dirección       | (3) Samoyedo                    |
+| 0100 | Dirección       | (1) Beagle                      |
+| 0101 | Dirección       | (2) Border terrier              |
+| 0110 | Dirección       | (1) Beagle                      |
+| 0111 | Dirección       | (4) Border Colie $\quad$ Saluki |
+| 1000 | Dirección       | (1) Beagle $\quad$ Chihuahua    |
+| 1001 | Dirección       | (2) Border terrier              |
+| 1010 | Dirección       | (1) Rottweiler                  |
+| 1011 | Dirección       | (3) Samoyedo                    |
+| 1100 | Dirección       | (1) Beagle                      |
+| 1101 | Dirección       | (2) Border terrier              |
+| 1110 | Dirección       | (1) Beagle                      |
+| 1111 | Dirección       | (4) Chow chow                   |
+
+- **Op 9:**
+
+|      |                 |                                 |
+| :--- | :-------------- | :------------------------------ |
+|      | Valor Tabla = 4 |                                 |
+| 0000 | Dirección       | (1) Beagle $\quad$ Chihuahua    |
+| 0001 | Dirección       | (2) Border terrier              |
+| 0010 | Dirección       | (1) Rottweiler                  |
+| 0011 | Dirección       | (3) Samoyedo                    |
+| 0100 | Dirección       | (1) Beagle $\quad$ Bóxer        |
+| 0101 | Dirección       | (2) Border terrier              |
+| 0110 | Dirección       | (1) Beagle                      |
+| 0111 | Dirección       | (4) Border Colie $\quad$ Saluki |
+| 1000 | Dirección       | (1) Beagle $\quad$ Chihuahua    |
+| 1001 | Dirección       | (2) Border terrier              |
+| 1010 | Dirección       | (1) Rottweiler                  |
+| 1011 | Dirección       | (3) Samoyedo                    |
+| 1100 | Dirección       | (1) Beagle                      |
+| 1101 | Dirección       | (2) Border terrier              |
+| 1110 | Dirección       | (1) Beagle                      |
+| 1111 | Dirección       | (4) Chow chow                   |
+
+- **Op 10:**
+
+|      |                 |                                       |
+| :--- | :-------------- | :------------------------------------ |
+|      | Valor Tabla = 4 |                                       |
+| 0000 | Dirección       | (1) Beagle $\quad$ Chihuahua          |
+| 0001 | Dirección       | (2) Border terrier $\quad$ Gran dánes |
+| 0010 | Dirección       | (1) Rottweiler                        |
+| 0011 | Dirección       | (3) Samoyedo                          |
+| 0100 | Dirección       | (1) Beagle $\quad$ Bóxer              |
+| 0101 | Dirección       | (2) Border terrier                    |
+| 0110 | Dirección       | (1) Beagle                            |
+| 0111 | Dirección       | (4) Border Colie $\quad$ Saluki       |
+| 1000 | Dirección       | (1) Beagle $\quad$ Chihuahua          |
+| 1001 | Dirección       | (2) Border terrier                    |
+| 1010 | Dirección       | (1) Rottweiler                        |
+| 1011 | Dirección       | (3) Samoyedo                          |
+| 1100 | Dirección       | (1) Beagle                            |
+| 1101 | Dirección       | (2) Border terrier                    |
+| 1110 | Dirección       | (1) Beagle                            |
+| 1111 | Dirección       | (4) Chow chow                         |
