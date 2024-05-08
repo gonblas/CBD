@@ -19,7 +19,7 @@
 
 ## Resolución
 
-Op +59: 59 **MOD** 6 = 5 ➔ Como en la dirección 5 estan todos los registros ocupados entonces debo colocar la clave en el área de desborde separada. Para ello debo copiar el enlace de la dirección 5 en la dirección del área de desborde donde se coloque el 59, y debo actualizar el enlace de la dirección 5 por la dirección que tenga el 59.
+* **Op +59:** 59 *MOD* 6 = 5 ➔ Como en la dirección 5 estan todos los registros ocupados entonces debo colocar la clave en el área de desborde separada. Para ello debo copiar el enlace de la dirección 5 en la dirección del área de desborde donde se coloque el 59, y debo actualizar el enlace de la dirección 5 por la dirección que tenga el 59.
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
@@ -38,7 +38,7 @@ Op +59: 59 **MOD** 6 = 5 ➔ Como en la dirección 5 estan todos los registros o
 | 3         | 1      | 59       |
 | 4         | -1     |          |
 
-Op +25: 25 **MOD** 6 = 1 ➔ Como en la dirección 1 estan todos los registros ocupados entonces debo colocar la clave en el área de desborde separada. Para ello debo copiar el enlace de la dirección 1 en la dirección del área de desborde donde se coloque el 25, y debo actualizar el enlace de la dirección 1 por la dirección que tenga el 25.
+* **Op +25:** 25 *MOD* 6 = 1 ➔ Como en la dirección 1 estan todos los registros ocupados entonces debo colocar la clave en el área de desborde separada. Para ello debo copiar el enlace de la dirección 1 en la dirección del área de desborde donde se coloque el 25, y debo actualizar el enlace de la dirección 1 por la dirección que tenga el 25.
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
@@ -57,7 +57,7 @@ Op +25: 25 **MOD** 6 = 1 ➔ Como en la dirección 1 estan todos los registros o
 | 3         | 1      | 59       |
 | 4         | 2      | 25       |
 
-Op -39: 39 **MOD** 6 = 3 ➔ Borro el valor sin realizar ninguna otra operación.
+* **Op -39:** 39 *MOD* 6 = 3 ➔ Borro el valor sin realizar ninguna otra operación.
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
@@ -76,7 +76,7 @@ Op -39: 39 **MOD** 6 = 3 ➔ Borro el valor sin realizar ninguna otra operación
 | 3         | 1      | 59       |
 | 4         | 2      | 25       |
 
-Op -1: 1 **MOD** 6 = 1 ➔ Elimino la clave que se encuentra en el área de desborde separada, y cambio los enlaces debidos.
+* **Op -1:** 1 *MOD* 6 = 1 ➔ Elimino la clave que se encuentra en el área de desborde separada, y cambio los enlaces debidos.
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |

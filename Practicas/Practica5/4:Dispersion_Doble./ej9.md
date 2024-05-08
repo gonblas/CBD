@@ -19,7 +19,7 @@ siguientes operaciones: +34, +27, +18, -63, -14. Función de dispersión: Clave 
 
 
 
-Op +34: 34 **MOD** 11 = 1 ➔ Como el registro de la dirección 1 esta ocupado aplico la segunda función de hashing F2: 34 **MOD** 7 = 6, entonces lo intento colocar en la posición  (1 + 6 + 1) **MOD** 11 = 8, la cual esta ocupada, por lo tanto, aplico la segunda función de hash hasta encontrar una función libre: (1 + 6 + 1 + 6 + 1 + 6 + 1) **MOD** 11 = 0
+* **Op +34:** 34 *MOD* 11 = 1 ➔ Como el registro de la dirección 1 esta ocupado aplico la segunda función de hashing F2: 34 *MOD* 7 = 6, entonces lo intento colocar en la posición  (1 + 6 + 1) *MOD* 11 = 8, la cual esta ocupada, por lo tanto, aplico la segunda función de hash hasta encontrar una función libre: (1 + 6 + 1 + 6 + 1 + 6 + 1) *MOD* 11 = 0
 
 | Dirección | Registro |
 | --------- | -------- |
@@ -36,7 +36,7 @@ Op +34: 34 **MOD** 11 = 1 ➔ Como el registro de la dirección 1 esta ocupado a
 | 10        |          |
 
 
-Op +27: 27 **MOD** 11 = 5 ➔ Lo coloco en la dirección que indica la primer función de hashing, pues esta libre.
+* **Op +27:** 27 *MOD* 11 = 5 ➔ Lo coloco en la dirección que indica la primer función de hashing, pues esta libre.
 
 | Dirección | Registro |
 | --------- | -------- |
@@ -53,7 +53,7 @@ Op +27: 27 **MOD** 11 = 5 ➔ Lo coloco en la dirección que indica la primer fu
 | 10        |          |
 
 
-Op +18: 18 **MOD** 11 = 7 ➔ Lo coloco en la dirección que indica la primer función de hashing, pues esta libre.
+* **Op +18:** 18 *MOD* 11 = 7 ➔ Lo coloco en la dirección que indica la primer función de hashing, pues esta libre.
 
 | Dirección | Registro |
 | --------- | -------- |
@@ -70,7 +70,7 @@ Op +18: 18 **MOD** 11 = 7 ➔ Lo coloco en la dirección que indica la primer fu
 | 10        |          |
 
 
-Op -63: 63 **MOD** 11 = 8 ➔ Elimino la clave en la dirección que indica la primer función de hash pues alli se encuentra el valor a eliminar y pongo la marca de inutilización.
+* **Op -63:** 63 *MOD* 11 = 8 ➔ Elimino la clave en la dirección que indica la primer función de hash pues alli se encuentra el valor a eliminar y pongo la marca de inutilización.
 
 
 | Dirección | Registro |
@@ -88,7 +88,7 @@ Op -63: 63 **MOD** 11 = 8 ➔ Elimino la clave en la dirección que indica la pr
 | 10        |          |
 
 
-Op -14: 14 **MOD** 11 = 3 ➔ Elimino la clave en la dirección que indica la primer función de hash pues alli se encuentra el valor a eliminar y pongo la marca de inutilización.
+* **Op -14:** 14 *MOD* 11 = 3 ➔ Elimino la clave en la dirección que indica la primer función de hash pues alli se encuentra el valor a eliminar y pongo la marca de inutilización.
 
 | Dirección | Registro |
 | --------- | -------- |

@@ -21,7 +21,7 @@
 
 ## Resolución
 
-Op +36: 36 **MOD** 7 = 1 ➔ Como en la dirección 1 los registros estan ocupados almaceno la clave en el área de desborde separada, en el primer registro libre (el de la dir. 3), y modifico los enlaces correspondientes. 
+* **Op +36:** 36 *MOD* 7 = 1 ➔ Como en la dirección 1 los registros estan ocupados almaceno la clave en el área de desborde separada, en el primer registro libre (el de la dir. 3), y modifico los enlaces correspondientes. 
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
@@ -43,7 +43,7 @@ Op +36: 36 **MOD** 7 = 1 ➔ Como en la dirección 1 los registros estan ocupado
 
 
 
-Op +62: 62 **MOD** 7 = 6 ➔ Como en la dirección 6 los registros estan ocupados almaceno la clave en el área de desborde separada, en el primer registro libre (el de la dir. 4), y modifico los enlaces correspondientes. 
+* **Op +62:** 62 *MOD* 7 = 6 ➔ Como en la dirección 6 los registros estan ocupados almaceno la clave en el área de desborde separada, en el primer registro libre (el de la dir. 4), y modifico los enlaces correspondientes. 
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
@@ -65,7 +65,7 @@ Op +62: 62 **MOD** 7 = 6 ➔ Como en la dirección 6 los registros estan ocupado
 
 
 
-Op -8: 8 **MOD** 7 = 1 ➔ Borro el registro con valor 8, y pongo alli el valor 22. El área de desborde separada queda igual.
+* **Op -8:** 8 *MOD* 7 = 1 ➔ Borro el registro con valor 8, y pongo alli el valor 22. El área de desborde separada queda igual.
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
@@ -87,7 +87,7 @@ Op -8: 8 **MOD** 7 = 1 ➔ Borro el registro con valor 8, y pongo alli el valor 
 
 
 
-Op -41: 41 **MOD** 7 = 6 ➔ Elimino el valor 41, el cual se encuentra en el área de desborde separada, y modifico los enlaces pertinentes.
+* **Op -41:** 41 *MOD* 7 = 6 ➔ Elimino el valor 41, el cual se encuentra en el área de desborde separada, y modifico los enlaces pertinentes.
 
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |

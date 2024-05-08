@@ -43,7 +43,7 @@ siguientes operaciones: +50, +14, +88, -20, -99. Función de dispersión: Clave 
 ## **_Técnica de resolución de colisiones: Saturación progresiva encadenada._**
 
 **3.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las
-siguientes operaciones: +73, +45, -34, -24. Función de dispersión: Clave MOD 8.
+siguientes operaciones: +73, +45, -34, -24. Función de dispersión: **Clave MOD 8**.
 Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calcule la densidad de empaquetamiento. Justifique brevemente cada operación. Justifique cada operación.**
 
 | Dirección | Enlace | Registro |
@@ -57,7 +57,7 @@ Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calc
 | 6         | -1     | 26       |
 | 7         | -1     |          |
 
-**4.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las siguientes operaciones: +57, +59, +64, -43, -39. Función de dispersión: Clave MOD 7.
+**4.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las siguientes operaciones: +57, +59, +64, -43, -39. Función de dispersión: **Clave MOD 7**.
 Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calcule la densidad de empaquetamiento. Justifique brevemente cada operación.**
 
 | Dirección | Enlace | Registro |
@@ -192,22 +192,22 @@ siguientes operaciones: +34, +27, +18, -63, -14. Función de dispersión: Clave 
 
 3. Para las claves siguientes, realice el proceso de dispersión mediante el método de hashing extensible, sabiendo que cada nodo tiene capacidad para dos registros. El número natural indica el orden de llegada de las claves. **Justifique brevemente**.
 
-|     |      |       |     |       |       |
-|-----|------|-------|-----|-------|-------|
-| 1   | Avena| 00000001| 2 | Cebada| 01100011|
-| 3   | Trigo| 11110101| 4 | Centeno| 01010110|
-| 5   | Arroz| 00101000| 6 | Maíz  | 00110100|
-| 7   | Sorgo| 10110010| 8 | Quinoa| 01111110|
-| 9   | Kamut| 01111100|10 | Mijo  | 00110000|
+|     |       |          |     |         |          |
+| --- | ----- | -------- | --- | ------- | -------- |
+| 1   | Avena | 00000001 | 2   | Cebada  | 01100011 |
+| 3   | Trigo | 11110101 | 4   | Centeno | 01010110 |
+| 5   | Arroz | 00101000 | 6   | Maíz    | 00110100 |
+| 7   | Sorgo | 10110010 | 8   | Quinoa  | 01111110 |
+| 9   | Kamut | 01111100 | 10  | Mijo    | 00110000 |
 
 4. Para las claves siguientes, realice el proceso de dispersión mediante el método de hashing extensible, sabiendo que cada nodo tiene capacidad para dos registros. El número natural indica el orden de llegada de las claves. Se debe mostrar el estado del archivo para cada operación. **Justifique brevemente**.
 
-|     |           |           |     |           |           |
-|-----|-----------|-----------|-----|-----------|-----------|
-| 1   | Barbos    | 00000001  | 2   | Pirañas   | 01100011  |
-| 3   | Tetras    | 11110100  | 4   | Cíclidos  | 01010110  |
-| 5   | Bettas    | 00101001  | 6   | GoldFish  | 00110101  |
-| 7   | Danios    | 10110000  | 8   | Rásboras  | 01111110  |
-| 9   | Gouramis  | 01111000  | 10  | Peces Gato| 00110100  |
+|     |          |          |     |            |          |
+| --- | -------- | -------- | --- | ---------- | -------- |
+| 1   | Barbos   | 00000001 | 2   | Pirañas    | 01100011 |
+| 3   | Tetras   | 11110100 | 4   | Cíclidos   | 01010110 |
+| 5   | Bettas   | 00101001 | 6   | GoldFish   | 00110101 |
+| 7   | Danios   | 10110000 | 8   | Rásboras   | 01111110 |
+| 9   | Gouramis | 01111000 | 10  | Peces Gato | 00110100 |
 
 ---

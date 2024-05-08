@@ -1,5 +1,4 @@
-**1.** Dado el siguiente archivo dispersado más abajo, dibuje los estados sucesivos para las
-siguientes operaciones: +44, +65, +30, +66. Función de dispersión: Clave **MOD** 11. Al finalizar calcule la densidad de empaquetamiento.
+**1.** Dado el siguiente archivo dispersado más abajo, dibuje los estados sucesivos para las siguientes operaciones: +44, +65, +30, +66. Función de dispersión: Clave **MOD** 11. Al finalizar calcule la densidad de empaquetamiento.
 
 | Dirección | Registro | Registro |
 | --------- | -------- | -------- |
@@ -17,7 +16,7 @@ siguientes operaciones: +44, +65, +30, +66. Función de dispersión: Clave **MOD
 
 ## Resolución
 
-Op +44: 44 **Mod** 11 = 0 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre:
+* **Op +44:** 44 *Mod* 11 = 0 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre:
 
 | Dirección | Registro | Registro |
 | --------- | -------- | -------- |
@@ -33,7 +32,7 @@ Op +44: 44 **Mod** 11 = 0 ➔ Como no hay espacio lo almaceno en el siguiente es
 | 9         |          |          |
 | 10        | 76       | 54       |
 
-Op +65: 65 **Mod** 11 = 10 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre:
+* **Op +65:** 65 *Mod* 11 = 10 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre:
 
 | Dirección | Registro | Registro |
 | --------- | -------- | -------- |
@@ -49,7 +48,7 @@ Op +65: 65 **Mod** 11 = 10 ➔ Como no hay espacio lo almaceno en el siguiente e
 | 9         |          |          |
 | 10        | 76       | 54       |
 
-Op +30: 30 **Mod** 11 = 8 ➔ Hay espacio para almacenarlo.
+* **Op +30:** 30 *Mod* 11 = 8 ➔ Hay espacio para almacenarlo.
 
 | Dirección | Registro | Registro |
 | --------- | -------- | -------- |
@@ -65,7 +64,7 @@ Op +30: 30 **Mod** 11 = 8 ➔ Hay espacio para almacenarlo.
 | 9         |          |          |
 | 10        | 76       | 54       |
 
-Op +66: 66 **Mod** 11 = 0 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre:
+* **Op +66:** 66 *Mod* 11 = 0 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre:
 
 | Dirección | Registro | Registro |
 | --------- | -------- | -------- |

@@ -1,5 +1,4 @@
-**3.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las
-siguientes operaciones: +73, +45, -34, -24. Función de dispersión: Clave MOD 8. Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calcule la densidad de empaquetamiento. Justifique brevemente cada operación. Justifique cada operación.**
+**3.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las siguientes operaciones: +73, +45, -34, -24. Función de dispersión: **Clave MOD 8**. Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calcule la densidad de empaquetamiento. Justifique brevemente cada operación. Justifique cada operación.**
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -14,7 +13,7 @@ siguientes operaciones: +73, +45, -34, -24. Función de dispersión: Clave MOD 8
 
 ## Resolución
 
-Op +73: 73 **MOD** 8 = 1 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre, cambio el enlace de la dirección 1 por la dirección en la cual coloco al 73, y la que estaba antes pasa a ser el enlace del 73:
+- **Op +73:** 73 _MOD_ 8 = 1 ➔ Como no hay espacio lo almaceno en el siguiente espacio libre, cambio el enlace de la dirección 1 por la dirección en la cual coloco al 73, y la que estaba antes pasa a ser el enlace del 73:
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -27,7 +26,7 @@ Op +73: 73 **MOD** 8 = 1 ➔ Como no hay espacio lo almaceno en el siguiente esp
 | 6         | -1     | 26       |
 | 7         | -1     |          |
 
-Op +45: 45 **MOD** 8 = 5 ➔ Como no hay espacio y el que se encuentra en la posicion no lo debe estar naturalmente entonces lo reasigno a otra posicion para poner al 45 en su lugar.
+- **Op +45:** 45 _MOD_ 8 = 5 ➔ Como no hay espacio y el que se encuentra en la posicion no lo debe estar naturalmente entonces lo reasigno a otra posicion para poner al 45 en su lugar.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -40,7 +39,7 @@ Op +45: 45 **MOD** 8 = 5 ➔ Como no hay espacio y el que se encuentra en la pos
 | 6         | -1     | 26       |
 | 7         | 4      | 73       |
 
-Op -34: 34 **MOD** 8 = 2 -> Como se encuentra el 34 en su posicion entonces lo elimino y en su lugar pongo al que se encuentra en la posicion que indica en enlace puesto que es distinto de -1.
+- **Op -34:** 34 _MOD_ 8 = 2 -> Como se encuentra el 34 en su posicion entonces lo elimino y en su lugar pongo al que se encuentra en la posicion que indica en enlace puesto que es distinto de -1.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -53,7 +52,7 @@ Op -34: 34 **MOD** 8 = 2 -> Como se encuentra el 34 en su posicion entonces lo e
 | 6         | -1     |          |
 | 7         | 4      | 73       |
 
-Op -24: 24 **MOD** 8 = 0 -> Como se encuentra el 34 en su posicion entonces lo elimino y como su enlace es -1 no debe realizar ninguna otra modificación.
+- **Op -24:** 24 _MOD_ 8 = 0 -> Como se encuentra el 34 en su posicion entonces lo elimino y como su enlace es -1 no debe realizar ninguna otra modificación.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |

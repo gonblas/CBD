@@ -17,7 +17,7 @@ Técnica de resolución de colisiones: **Saturación progresiva encadenada. Calc
 
 ## Resolución
 
-Op +18: 18 **MOD** 11 = 7 ➔ Como la posición 7 esta libre entonces simplemente lo coloco alli.
+* **Op +18:** 18 *MOD* 11 = 7 ➔ Como la posición 7 esta libre entonces simplemente lo coloco alli.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -33,7 +33,7 @@ Op +18: 18 **MOD** 11 = 7 ➔ Como la posición 7 esta libre entonces simplement
 | 9         | -1     |          |
 | 10        | -1     |          |
 
-Op +34: 34 **MOD** 11 = 1 ➔ Como en la dirección donde debe ser colocado el 34 esta ocupado por una clave que si debe estar alli (según indica la función de hash) entonces coloco al 34 en el registro de la siguiente dirección libre copiando alli el enlace de la dirección donde deberia ser colocado el mismo, el cual tendrá el enlace donde el 34 sea colocado.
+* **Op +34:** 34 *MOD* 11 = 1 ➔ Como en la dirección donde debe ser colocado el 34 esta ocupado por una clave que si debe estar alli (según indica la función de hash) entonces coloco al 34 en el registro de la siguiente dirección libre copiando alli el enlace de la dirección donde deberia ser colocado el mismo, el cual tendrá el enlace donde el 34 sea colocado.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -49,7 +49,7 @@ Op +34: 34 **MOD** 11 = 1 ➔ Como en la dirección donde debe ser colocado el 3
 | 9         | -1     |          |
 | 10        | -1     |          |
 
-Op -25: 25 **MOD** 11 = 3 ➔ Como el 35 esta en la dirección que indica la función de hash lo borro y lo reemplazo por la clave que indica el enlace de la posición donde se encuentra el 25, dejando libre tal posición que referencia.
+* **Op -25:** 25 *MOD* 11 = 3 ➔ Como el 35 esta en la dirección que indica la función de hash lo borro y lo reemplazo por la clave que indica el enlace de la posición donde se encuentra el 25, dejando libre tal posición que referencia.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
@@ -65,7 +65,7 @@ Op -25: 25 **MOD** 11 = 3 ➔ Como el 35 esta en la dirección que indica la fun
 | 9         | -1     |          |
 | 10        | -1     |          |
 
-Op -11: 11 **MOD** 11 = 0 ➔ Como el 11 se encuentra en la pocición que indica la función de hash directamente lo borro, y se termina la operación pues su enlace no referencia a ninguna otra clave.
+* **Op -11:** 11 *MOD* 11 = 0 ➔ Como el 11 se encuentra en la pocición que indica la función de hash directamente lo borro, y se termina la operación pues su enlace no referencia a ninguna otra clave.
 
 | Dirección | Enlace | Registro |
 | --------- | ------ | -------- |
