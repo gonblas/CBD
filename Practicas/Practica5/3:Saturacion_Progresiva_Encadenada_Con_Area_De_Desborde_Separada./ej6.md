@@ -1,0 +1,100 @@
+**6.** Dado el siguiente archivo dispersado, dibuje los estados sucesivos para las siguientes operaciones: +59, +25, -39, -1. Función de dispersión: **Clave MOD 6**. Técnica de resolución de colisiones: Saturación progresiva encadenada con área de desborde separada. **Justifique brevemente cada operación.**
+
+| Dirección | Enlace | Registro |
+| --------- | ------ | -------- |
+| 0         | -1     | 43       |
+| 1         | -1     | 65       |
+| 2         | 0      | 1        |
+| 3         | -1     |          |
+| 4         | -1     |          |
+
+| Dirección | Enlace | Registro | Registro |
+| --------- | ------ | -------- | -------- |
+| 0         | -1     | 24       |          |
+| 1         | 2      | 13       | 19       |
+| 2         | -1     |          |          |
+| 3         | -1     | 39       |          |
+| 4         | -1     | 34       |          |
+| 5         | 1      | 17       | 53       |
+
+## Resolución
+
+Op +59: 59 **MOD** 6 = 5 ➔ Como en la dirección 5 estan todos los registros ocupados entonces debo colocar la clave en el área de desborde separada. Para ello debo copiar el enlace de la dirección 5 en la dirección del área de desborde donde se coloque el 59, y debo actualizar el enlace de la dirección 5 por la dirección que tenga el 59.
+
+| Dirección | Enlace | Registro | Registro |
+| --------- | ------ | -------- | -------- |
+| 0         | -1     | 24       |          |
+| 1         | 2      | 13       | 19       |
+| 2         | -1     |          |          |
+| 3         | -1     | 39       |          |
+| 4         | -1     | 34       |          |
+| 5         | 3      | 17       | 53       |
+
+| Dirección | Enlace | Registro |
+| --------- | ------ | -------- |
+| 0         | -1     | 43       |
+| 1         | -1     | 65       |
+| 2         | 0      | 1        |
+| 3         | 1      | 59       |
+| 4         | -1     |          |
+
+Op +25: 25 **MOD** 6 = 1 ➔ Como en la dirección 1 estan todos los registros ocupados entonces debo colocar la clave en el área de desborde separada. Para ello debo copiar el enlace de la dirección 1 en la dirección del área de desborde donde se coloque el 25, y debo actualizar el enlace de la dirección 1 por la dirección que tenga el 25.
+
+| Dirección | Enlace | Registro | Registro |
+| --------- | ------ | -------- | -------- |
+| 0         | -1     | 24       |          |
+| 1         | 4      | 13       | 19       |
+| 2         | -1     |          |          |
+| 3         | -1     | 39       |          |
+| 4         | -1     | 34       |          |
+| 5         | 3      | 17       | 53       |
+
+| Dirección | Enlace | Registro |
+| --------- | ------ | -------- |
+| 0         | -1     | 43       |
+| 1         | -1     | 65       |
+| 2         | 0      | 1        |
+| 3         | 1      | 59       |
+| 4         | 2      | 25       |
+
+Op -39: 39 **MOD** 6 = 3 ➔ Borro el valor sin realizar ninguna otra operación.
+
+| Dirección | Enlace | Registro | Registro |
+| --------- | ------ | -------- | -------- |
+| 0         | -1     | 24       |          |
+| 1         | 4      | 13       | 19       |
+| 2         | -1     |          |          |
+| 3         | -1     |          |          |
+| 4         | -1     | 34       |          |
+| 5         | 3      | 17       | 53       |
+
+| Dirección | Enlace | Registro |
+| --------- | ------ | -------- |
+| 0         | -1     | 43       |
+| 1         | -1     | 65       |
+| 2         | 0      | 1        |
+| 3         | 1      | 59       |
+| 4         | 2      | 25       |
+
+Op -1: 1 **MOD** 6 = 1 ➔ Elimino la clave que se encuentra en el área de desborde separada, y cambio los enlaces debidos.
+
+| Dirección | Enlace | Registro | Registro |
+| --------- | ------ | -------- | -------- |
+| 0         | -1     | 24       |          |
+| 1         | 4      | 13       | 19       |
+| 2         | -1     |          |          |
+| 3         | -1     |          |          |
+| 4         | -1     | 34       |          |
+| 5         | 3      | 17       | 53       |
+
+| Dirección | Enlace | Registro |
+| --------- | ------ | -------- |
+| 0         | -1     | 43       |
+| 1         | -1     | 65       |
+| 2         | -1     |          |
+| 3         | 1      | 59       |
+| 4         | 0      | 25       |
+
+**Densidad de empaquetamiento:**
+
+$$DE = \frac{\#registros}{\#tot\_registros}\cdot 100\% = \frac{10}{17}\cdot 100\% = 58.82\%$$
