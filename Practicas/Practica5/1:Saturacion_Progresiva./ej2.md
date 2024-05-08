@@ -90,6 +90,6 @@ Op -99: 99 **Mod** 10 = 9 ➔ Busco en la dirección 9 y el 99 esta alli, como l
 | 8         | 88       |
 | 9         |          |
 
-Densidad de empaquetamiento:
+**Densidad de empaquetamiento:**
 
 $$DE = \frac{\#registros}{RPN\cdot n}\cdot 100\% = \frac{8}{10\cdot 1}\cdot 100\% = 80\%$$

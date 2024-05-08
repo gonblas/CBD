@@ -81,6 +81,6 @@ Op +66: 66 **Mod** 11 = 0 ➔ Como no hay espacio lo almaceno en el siguiente es
 | 9         |          |          |
 | 10        | 76       | 54       |
 
-Densidad de empaquetamiento:
+**Densidad de empaquetamiento:**
 
 $$DE = \frac{\#registros}{RPN\cdot n}\cdot 100\% = \frac{13}{11\cdot 2}\cdot 100\% = 59.09\%$$
