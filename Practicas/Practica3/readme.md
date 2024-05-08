@@ -66,8 +66,7 @@ nombre, descripción y stock.
 
 **a)** Deberá realizar un procedimiento que tomando como entrada el archivo de texto, genere el correspondiente archivo binario de datos.
 
-**b)** Se reciben por pantalla códigos de indumentaria obsoletos, los cuales deben eliminarse del archivo de datos, utilizando una marca de borrado. La marca de
-borrado consiste en poner valor negativo al stock. Realice el procedimiento correspondiente.
+**b)** Se reciben por pantalla códigos de indumentaria obsoletos, los cuales deben eliminarse del archivo de datos, utilizando una marca de borrado. La marca de borrado consiste en poner valor negativo al stock. Realice el procedimiento correspondiente.
 
 **c)** A continuación, se solicita realizar un procedimiento que permita realizar el alta de
 una nueva indumentaria con los valores obtenidos por teclado.
@@ -82,7 +81,7 @@ supuso la utilización de la técnica de lista invertida para reutilización de 
 
 **g)** Enumere ventajas que encuentra entre agregar y eliminar indumentaria con o sin utilización de la técnica de recuperación de espacio libre.
 
-**4.** Una disquera cuenta con un archivo conteniendo la información de discos(cd) que posee a la
+**4.** Una disquera cuenta con un archivo conteniendo la información de discos (cd) que posee a la
 venta. De cada cd se conoce: un código único, nombre álbum, género, artista, una descripción
 asociada, año de edición y cantidad de copias en stock. Al archivo no tiene orden.
 
