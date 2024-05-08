@@ -95,6 +95,13 @@
 | 3         | 1      | 59       |
 | 4         | 0      | 25       |
 
-**Densidad de empaquetamiento:**
+**Densidad de empaquetamiento:** Se calcula una densidad por tabla:
 
-$$DE = \frac{\#registros}{\#tot\_registros}\cdot 100\% = \frac{10}{17}\cdot 100\% = 58.82\%$$
+* Tabla Main: 
+
+    $$DE = \frac{\#registros}{RPN\cdot n}\cdot 100\% = \frac{6}{6\cdot 2}\cdot 100\% = 50\%$$
+
+
+* Tabla de desborde: 
+
+    $$DE = \frac{\#registros}{RPN\cdot n}\cdot 100\% = \frac{4}{5\cdot 1}\cdot 100\% = 80\%$$
