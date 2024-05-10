@@ -66,17 +66,17 @@
 
 - **Op 7:** Overflow en el registro apuntado por 000.
 
-|     |                 |                             |
-| :-- | :-------------- | :-------------------------- |
-|     | Valor Tabla = 3 |                             |
-| 000 | Dirección       | (2) Tetras $\quad$ Danios   |
-| 001 | Dirección       | (3) Barbos $\quad$ Bettas   |
-| 010 | Dirección       | (1) Tetras $\quad$ Cíclidos |
-| 011 | Dirección       | (2) Pirañas                 |
-| 100 | Dirección       | (2) Cíclidos                |
-| 101 | Dirección       | (3) GoldFish                |
-| 110 | Dirección       | (1) Tetras $\quad$ Cíclidos |
-| 111 | Dirección       | (2) Pirañas                 |
+|     |                 |                           |
+| :-- | :-------------- | :------------------------ |
+|     | Valor Tabla = 3 |                           |
+| 000 | Dirección       | (2) Tetras $\quad$ Danios |
+| 001 | Dirección       | (3) Barbos $\quad$ Bettas |
+| 010 | Dirección       | (2) Cíclidos              |
+| 011 | Dirección       | (2) Pirañas               |
+| 100 | Dirección       | (2) Tetras $\quad$ Danios |
+| 101 | Dirección       | (3) GoldFish              |
+| 110 | Dirección       | (2) Cíclidos              |
+| 111 | Dirección       | (2) Pirañas               |
 
 - **Op 8:** Overflow en el registro apuntado por 110.
 
@@ -85,9 +85,9 @@
 |     | Valor Tabla = 3 |                               |
 | 000 | Dirección       | (2) Tetras $\quad$ Danios     |
 | 001 | Dirección       | (3) Barbos $\quad$ Bettas     |
-| 010 | Dirección       | (2) Tetras $\quad$ Cíclidos   |
+| 010 | Dirección       | (2) Cíclidos $\quad$ Rásboras |
 | 011 | Dirección       | (2) Pirañas                   |
-| 100 | Dirección       | (2) Cíclidos                  |
+| 100 | Dirección       | (2) Tetras $\quad$ Danios     |
 | 101 | Dirección       | (3) GoldFish                  |
 | 110 | Dirección       | (2) Cíclidos $\quad$ Rásboras |
 | 111 | Dirección       | (2) Pirañas                   |
@@ -99,7 +99,7 @@
 |     | Valor Tabla = 3 |                               |
 | 000 | Dirección       | (3) Danios $\quad$ Gouramis   |
 | 001 | Dirección       | (3) Barbos $\quad$ Bettas     |
-| 010 | Dirección       | (2) Tetras $\quad$ Cíclidos   |
+| 010 | Dirección       | (2) Cíclidos $\quad$ Rásboras |
 | 011 | Dirección       | (2) Pirañas                   |
 | 100 | Dirección       | (3) Tetras                    |
 | 101 | Dirección       | (3) GoldFish                  |
@@ -113,7 +113,7 @@
 |     | Valor Tabla = 3 |                               |
 | 000 | Dirección       | (3) Danios $\quad$ Gouramis   |
 | 001 | Dirección       | (3) Barbos $\quad$ Bettas     |
-| 010 | Dirección       | (2) Tetras $\quad$ Cíclidos   |
+| 010 | Dirección       | (2) Cíclidos $\quad$ Rásboras |
 | 011 | Dirección       | (2) Pirañas                   |
 | 100 | Dirección       | (3) Tetras $\quad$ Peces Gato |
 | 101 | Dirección       | (3) GoldFish                  |

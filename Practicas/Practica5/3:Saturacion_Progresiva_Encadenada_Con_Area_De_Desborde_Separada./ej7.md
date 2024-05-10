@@ -70,7 +70,7 @@
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
 | 0         | -1     | 14       |          |
-| 1         | 3      | 22       | 0        |
+| 1         | 3      | 22       |          |
 | 2         | -1     |          |          |
 | 3         | -1     | 24       |          |
 | 4         | 1      | 11       | 18       |
@@ -92,7 +92,7 @@
 | Dirección | Enlace | Registro | Registro |
 | --------- | ------ | -------- | -------- |
 | 0         | -1     | 14       |          |
-| 1         | 3      | 22       | 0        |
+| 1         | 3      | 22       |          |
 | 2         | -1     |          |          |
 | 3         | -1     | 24       |          |
 | 4         | 1      | 11       | 18       |
@@ -113,7 +113,7 @@
 
 * Tabla Main: 
 
-    $$DE = \frac{\#registros}{RPN\cdot n}\cdot 100\% = \frac{8}{7\cdot 2}\cdot 100\% = 57.14\%$$
+    $$DE = \frac{\#registros}{RPN\cdot n}\cdot 100\% = \frac{7}{7\cdot 2}\cdot 100\% = 50\%$$
 
 
 * Tabla de desborde: 

@@ -32,43 +32,43 @@
 | 0   | Dirección       | (1)                                    |
 | 1   | Dirección       | (1) Avena $\quad$ Cebada $\quad$ Trigo |
 
-|     |                 |                          |
-| :-- | :-------------- | :----------------------- |
-|     | Valor Tabla = 2 |                          |
-| 00  | Dirección       | (2) Trigo                |
-| 01  | Dirección       | (2) Trigo                |
-| 10  | Dirección       | (2) Trigo                |
-| 11  | Dirección       | (2) Cebada $\quad$ Trigo |
+|     |                 |                         |
+| :-- | :-------------- | :---------------------- |
+|     | Valor Tabla = 2 |                         |
+| 00  | Dirección       | (1)                     |
+| 01  | Dirección       | (2) Avena $\quad$ Trigo |
+| 10  | Dirección       | (1)                     |
+| 11  | Dirección       | (2) Cebada              |
 
 - **Op 4:**
 
-|     |                 |                          |
-| :-- | :-------------- | :----------------------- |
-|     | Valor Tabla = 2 |                          |
-| 00  | Dirección       | (2) Trigo                |
-| 01  | Dirección       | (2) Trigo                |
-| 10  | Dirección       | (2) Centeno              |
-| 11  | Dirección       | (2) Cebada $\quad$ Trigo |
+|     |                 |                         |
+| :-- | :-------------- | :---------------------- |
+|     | Valor Tabla = 2 |                         |
+| 00  | Dirección       | (1)                     |
+| 01  | Dirección       | (2) Avena $\quad$ Trigo |
+| 10  | Dirección       | (1) Centeno             |
+| 11  | Dirección       | (2) Cebada              |
 
 - **Op 5:**
 
-|     |                 |                          |
-| :-- | :-------------- | :----------------------- |
-|     | Valor Tabla = 2 |                          |
-| 00  | Dirección       | (2) Arroz                |
-| 01  | Dirección       | (2) Trigo                |
-| 10  | Dirección       | (2) Centeno              |
-| 11  | Dirección       | (2) Cebada $\quad$ Trigo |
+|     |                 |                           |
+| :-- | :-------------- | :------------------------ |
+|     | Valor Tabla = 2 |                           |
+| 00  | Dirección       | (1) Arroz $\quad$ Centeno |
+| 01  | Dirección       | (2) Avena $\quad$ Trigo   |
+| 10  | Dirección       | (1) Arroz $\quad$ Centeno |
+| 11  | Dirección       | (2) Cebada                |
 
 - **Op 6:**
 
-|     |                 |                          |
-| :-- | :-------------- | :----------------------- |
-|     | Valor Tabla = 2 |                          |
-| 00  | Dirección       | (2) Arroz $\quad$ Maíz   |
-| 01  | Dirección       | (2) Trigo                |
-| 10  | Dirección       | (2) Centeno              |
-| 11  | Dirección       | (2) Cebada $\quad$ Trigo |
+|     |                 |                         |
+| :-- | :-------------- | :---------------------- |
+|     | Valor Tabla = 2 |                         |
+| 00  | Dirección       | (2) Arroz $\quad$ Maíz  |
+| 01  | Dirección       | (2) Avena $\quad$ Trigo |
+| 10  | Dirección       | (2) Centeno             |
+| 11  | Dirección       | (2) Cebada              |
 
 - **Op 7:**
 
@@ -76,48 +76,48 @@
 | :-- | :-------------- | :------------------------ |
 |     | Valor Tabla = 2 |                           |
 | 00  | Dirección       | (2) Arroz $\quad$ Maíz    |
-| 01  | Dirección       | (2) Trigo                 |
+| 01  | Dirección       | (2) Avena $\quad$ Trigo   |
 | 10  | Dirección       | (2) Centeno $\quad$ Sorgo |
-| 11  | Dirección       | (2) Cebada $\quad$ Trigo  |
+| 11  | Dirección       | (2) Cebada                |
 
 - **Op 8:** Overflow en el registro apuntado por 10.
 
 |     |                 |                            |
 | :-- | :-------------- | :------------------------- |
-|     | Valor Tabla = 3 |                            |
+|     | Valor Tabla = 2 |                            |
 | 000 | Dirección       | (2) Arroz $\quad$ Maíz     |
-| 001 | Dirección       | (2) Trigo                  |
+| 001 | Dirección       | (2) Avena $\quad$ Trigo    |
 | 010 | Dirección       | (3) Sorgo                  |
-| 011 | Dirección       | (2) Cebada $\quad$ Trigo   |
+| 011 | Dirección       | (2) Cebada                 |
 | 100 | Dirección       | (2) Arroz $\quad$ Maíz     |
-| 101 | Dirección       | (2) Trigo                  |
+| 101 | Dirección       | (2) Avena $\quad$ Trigo    |
 | 110 | Dirección       | (3) Centeno $\quad$ Quinoa |
-| 111 | Dirección       | (2) Cebada $\quad$ Trigo   |
+| 111 | Dirección       | (2) Cebada                 |
 
 - **Op 9:** Overflow en el registro apuntado por 100.
 
 |     |                 |                            |
 | :-- | :-------------- | :------------------------- |
-|     | Valor Tabla = 3 |                            |
+|     | Valor Tabla = 2 |                            |
 | 000 | Dirección       | (3) Arroz                  |
-| 001 | Dirección       | (2) Trigo                  |
+| 001 | Dirección       | (2) Avena $\quad$ Trigo    |
 | 010 | Dirección       | (3) Sorgo                  |
-| 011 | Dirección       | (2) Cebada $\quad$ Trigo   |
+| 011 | Dirección       | (2) Cebada                 |
 | 100 | Dirección       | (3) Kamut $\quad$ Maíz     |
-| 101 | Dirección       | (2) Trigo                  |
+| 101 | Dirección       | (2) Avena $\quad$ Trigo    |
 | 110 | Dirección       | (3) Centeno $\quad$ Quinoa |
-| 111 | Dirección       | (2) Cebada $\quad$ Trigo   |
+| 111 | Dirección       | (2) Cebada                 |
 
 - **Op 10:**
 
 |     |                 |                            |
 | :-- | :-------------- | :------------------------- |
-|     | Valor Tabla = 3 |                            |
+|     | Valor Tabla = 2 |                            |
 | 000 | Dirección       | (3) Arroz $\quad$ Mijo     |
-| 001 | Dirección       | (2) Trigo                  |
+| 001 | Dirección       | (2) Avena $\quad$ Trigo    |
 | 010 | Dirección       | (3) Sorgo                  |
-| 011 | Dirección       | (2) Cebada $\quad$ Trigo   |
+| 011 | Dirección       | (2) Cebada                 |
 | 100 | Dirección       | (3) Kamut $\quad$ Maíz     |
-| 101 | Dirección       | (2) Trigo                  |
+| 101 | Dirección       | (2) Avena $\quad$ Trigo    |
 | 110 | Dirección       | (3) Centeno $\quad$ Quinoa |
-| 111 | Dirección       | (2) Cebada $\quad$ Trigo   |
+| 111 | Dirección       | (2) Cebada                 |

@@ -60,7 +60,7 @@
 | 8         | 88       |
 | 9         | 99       |
 
-* **Op -20:** 20 *Mod* 10 = 0 ➔ Busco a partir de la dirección 0 hasta el espacio libe y no encontre al 20, por lo tanto, la tabla queda igual.
+* **Op -20:** 20 *Mod* 10 = 0 ➔ Busco a partir de la dirección 0 hasta el espacio libre y no encontre al 20, por lo tanto, la tabla queda igual.
 
 | Dirección | Registro |
 | --------- | -------- |
