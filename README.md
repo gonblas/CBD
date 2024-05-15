@@ -10,8 +10,7 @@ El objetivo de la materia es introducir al alumno en los conceptos de estructura
 - [Practica 2](Practicas/Practica2 'Practica 2'): Algorítmica Clásica - Archivos secuenciales.
 - [Practica 3](Practicas/Practica3 'Practica 3'): Archivos secuenciales - Bajas.
 - [Practica 4](Practicas/Practica4 'Practica 4'): Árboles B y B+.
-- [Practica 5](Practicas/Practica5 'Practica 5'): Dispersión Estática.
-- [Practica 6](Practicas/Practica6 'Practica 6'): Dispersión Extensible.
+- [Practica 5](Practicas/Practica5 'Practica 5'): Dispersión Estática y Extensible.
 
 ---
 
