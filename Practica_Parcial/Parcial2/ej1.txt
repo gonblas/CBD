@@ -1,0 +1,67 @@
+Program ej1;
+
+type
+    excursion_type = record
+        codigo: integer;
+        nombre: string;
+        descripcion: string;
+        total: integer;
+    end;
+
+    maestro_type = file of excursion_type;
+
+
+procedure text_a_bin(var fuente: text; var maestro: maestro_type);
+var
+    act, ant: excursion_type;
+    vendidos: integer;
+begin
+    reset(fuente); rewrite(maestro);
+
+    if (not eof(fuente)) then begin
+        readln(fuente, act.codigo);
+        readln(fuente, act.nombre);
+        readln(fuente, act.descripcion);
+        readln(fuente, act.total);
+        ant := act;
+
+        while (not eof(fuente)) do begin
+            readln(fuente, act.codigo);
+            readln(fuente, act.nombre);
+            readln(fuente, act.descripcion);
+            readln(fuente, vendidos);
+
+            while (not eof(fuente)) and (ant.codigo = act.codigo) do begin
+                ant.total := ant.total + vendidos;
+                
+                readln(fuente, act.codigo);
+                readln(fuente, act.nombre);
+                readln(fuente, act.descripcion);
+                readln(fuente, vendidos);
+            end;
+
+            write(maestro, ant);
+
+            ant.codigo := act.codigo;
+            ant.nombre := act.nombre;
+            ant.descripcion := act.descripcion;
+            ant.total := vendidos; // Inicializar con la última cantidad leída
+        end;
+        write(maestro, ant);
+    end;
+
+    close(fuente); close(maestro);
+end;
+
+
+
+var
+    fuente: text;
+    maestro: maestro_type;
+    excursion: excursion_type;
+begin
+    Assign(fuente, 'excursiones.txt');
+    Assign(maestro, 'excursiones.dat');
+
+    text_a_bin(fuente, maestro);
+end.
