@@ -49,7 +49,6 @@ begin
 end;
 
 
-
 var
     fuente: text;
     maestro: maestro_type;

@@ -1,5 +1,8 @@
 Program ej1;
 
+const
+    valor_alto = 9999;
+
 type
     excursion_type = record
         codigo: integer;
@@ -11,54 +14,44 @@ type
     maestro_type = file of excursion_type;
 
 
+
+procedure leer(var archivo: text; var excursion: excursion_type);
+begin
+    if (not eof(archivo)) then begin
+        readln(archivo, excursion.codigo);
+        readln(archivo, excursion.nombre);
+        readln(archivo, excursion.descripcion);
+        readln(archivo, excursion.total)
+    end
+    else
+        excursion.codigo := valor_alto;
+end;
+
 procedure text_a_bin(var fuente: text; var maestro: maestro_type);
 var
     act, ant: excursion_type;
-    vendidos: integer;
 begin
     reset(fuente); rewrite(maestro);
+    leer(fuente, act);
 
-    if (not eof(fuente)) then begin
-        readln(fuente, act.codigo);
-        readln(fuente, act.nombre);
-        readln(fuente, act.descripcion);
-        readln(fuente, act.total);
+    while(act.codigo <> valor_alto)do begin
         ant := act;
+        leer(fuente, act);
 
-        while (not eof(fuente)) do begin
-            readln(fuente, act.codigo);
-            readln(fuente, act.nombre);
-            readln(fuente, act.descripcion);
-            readln(fuente, vendidos);
-
-            while (not eof(fuente)) and (ant.codigo = act.codigo) do begin
-                ant.total := ant.total + vendidos;
-                
-                readln(fuente, act.codigo);
-                readln(fuente, act.nombre);
-                readln(fuente, act.descripcion);
-                readln(fuente, vendidos);
-            end;
-
-            write(maestro, ant);
-
-            ant.codigo := act.codigo;
-            ant.nombre := act.nombre;
-            ant.descripcion := act.descripcion;
-            ant.total := vendidos; // Inicializar con la última cantidad leída
+        while((act.codigo <> valor_alto) and (ant.codigo = act.codigo))do begin
+            ant.total := ant.total + act.total;
+            leer(fuente, act);
         end;
-        write(maestro, ant);
+        Write(maestro, ant);
     end;
 
     close(fuente); close(maestro);
 end;
 
 
-
 var
     fuente: text;
     maestro: maestro_type;
-    excursion: excursion_type;
 begin
     Assign(fuente, 'excursiones.txt');
     Assign(maestro, 'excursiones.dat');

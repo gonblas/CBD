@@ -1,5 +1,6 @@
 Program ej1;
-
+const
+    valor_alto = 9999;
 type
     str30 = string[30];
     producto_type = record 
@@ -11,6 +12,20 @@ type
 
     maestro_type = file of producto_type;
 
+
+procedure leer(var archivo: text; var prod: producto_type);
+begin
+    if(not eof(archivo))then begin
+        readln(archivo, prod.codigo);
+        readln(archivo, prod.nombre);
+        readln(archivo, prod.descripcion);
+        readln(archivo, prod.stock);
+    end
+    else
+        prod.codigo := valor_alto;
+
+end;
+
 procedure text_a_bin(var texto: text; var maestro: maestro_type);
 var
     prod: producto_type;
@@ -20,16 +35,12 @@ begin
     prod.codigo := -1;   //Dir. al siguiente borrado
 
     Write(maestro, prod);  
-
+    leer(texto, prod);
 
     {Supongo que el archivo de texto tiene un campo por linea}
-    while(not eof(texto))do begin
-        Readln(texto, prod.codigo);
-        Readln(texto, prod.nombre);
-        Readln(texto, prod.descripcion);
-        Readln(texto, prod.stock);
-
+    while(prod.codigo <> valor_alto)do begin
         write(maestro, prod);
+        leer(texto, prod);
     end;
 
     close(texto); close(maestro);
