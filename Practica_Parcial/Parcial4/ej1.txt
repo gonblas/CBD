@@ -46,7 +46,7 @@ begin
         reg_comp.tipoVivienda := reg_viv.tipoVivienda;
         reg_comp.total := 1;
         leer(viviendas, reg_viv);
-        while(reg_comp.tipoVivienda = reg_viv.tipoVivienda)do begin
+        while((reg_comp.codPartido = reg_viv.codPartido) and (reg_comp.tipoVivienda = reg_viv.tipoVivienda))do begin
             reg_comp.total := reg_comp.total + 1;
             leer(viviendas, reg_viv);
         end;
