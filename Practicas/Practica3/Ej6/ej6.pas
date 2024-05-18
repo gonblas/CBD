@@ -56,7 +56,6 @@ begin
     end;
 
     Close(articles); Close(new);
-
     Erase(articles);
 
     Rename(new, '../tmp/Ej6/articles.dat');

@@ -1,0 +1,60 @@
+1
+Televisor LED 50"
+Televisor LED de 50 pulgadas con resolución 4K
+799.99
+200
+150
+2
+Lavadora de carga frontal
+Lavadora automática de carga frontal con capacidad de 8kg
+499.99
+250
+200
+3
+Refrigerador de dos puertas
+Refrigerador de dos puertas con dispensador de agua y hielo
+899.99
+220
+180
+4
+Horno eléctrico empotrable
+Horno eléctrico empotrable con función de convección
+349.99
+150
+120
+5
+Aspiradora sin bolsa
+Aspiradora sin bolsa con tecnología ciclónica
+149.99
+350
+300
+6
+Microondas de acero inoxidable
+Microondas de acero inoxidable con capacidad de 1.2 cu ft
+99.99
+300
+250
+7
+Licuadora de alta potencia
+Licuadora de alta potencia con jarra de vidrio
+79.99
+200
+180
+8
+Cafetera programable
+Cafetera programable con capacidad de 12 tazas
+59.99
+240
+220
+9
+Ventilador de torre
+Ventilador de torre con control remoto
+69.99
+180
+150
+10
+Plancha de vapor
+Plancha de vapor con suela de cerámica
+39.99
+220
+200

@@ -1,0 +1,70 @@
+Codigo: 1
+Nombre: Televisor LED 50"
+Descripcion: Televisor LED de 50 pulgadas con resolución 4K
+Precio: 799.99
+Vendidos: 250
+Max vendidos mes: 150
+---------------------------------
+Codigo: 2
+Nombre: Lavadora de carga frontal
+Descripcion: Lavadora automática de carga frontal con capacidad de 8kg
+Precio: 499.99
+Vendidos: 600
+Max vendidos mes: 350
+---------------------------------
+Codigo: 3
+Nombre: Refrigerador de dos puertas
+Descripcion: Refrigerador de dos puertas con dispensador de agua y hielo
+Precio: 899.99
+Vendidos: 470
+Max vendidos mes: 250
+---------------------------------
+Codigo: 4
+Nombre: Horno eléctrico empotrable
+Descripcion: Horno eléctrico empotrable con función de convección
+Precio: 349.99
+Vendidos: 450
+Max vendidos mes: 300
+---------------------------------
+Codigo: 5
+Nombre: Aspiradora sin bolsa
+Descripcion: Aspiradora sin bolsa con tecnología ciclónica
+Precio: 149.99
+Vendidos: 350
+Max vendidos mes: 300
+---------------------------------
+Codigo: 6
+Nombre: Microondas de acero inoxidable
+Descripcion: Microondas de acero inoxidable con capacidad de 1.2 cu ft
+Precio: 99.99
+Vendidos: 550
+Max vendidos mes: 250
+---------------------------------
+Codigo: 7
+Nombre: Licuadora de alta potencia
+Descripcion: Licuadora de alta potencia con jarra de vidrio
+Precio: 79.99
+Vendidos: 200
+Max vendidos mes: 180
+---------------------------------
+Codigo: 8
+Nombre: Cafetera programable
+Descripcion: Cafetera programable con capacidad de 12 tazas
+Precio: 59.99
+Vendidos: 240
+Max vendidos mes: 220
+---------------------------------
+Codigo: 9
+Nombre: Ventilador de torre
+Descripcion: Ventilador de torre con control remoto
+Precio: 69.99
+Vendidos: 180
+Max vendidos mes: 150
+---------------------------------
+Codigo: 10
+Nombre: Plancha de vapor
+Descripcion: Plancha de vapor con suela de cerámica
+Precio: 39.99
+Vendidos: 220
+Max vendidos mes: 200
+---------------------------------
