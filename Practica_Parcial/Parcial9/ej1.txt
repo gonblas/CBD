@@ -1,0 +1,74 @@
+Program ej1;
+
+const
+    valor_alto = 9999;
+
+
+type
+    tVta = record
+        codSuc: word;
+        idAutor: longword;
+        ISBN: longword;
+        idEj: word;
+    end;
+
+    tArchVtas = file of tVta;
+
+procedure leer(var a: tArchVtas; var dato: tVta);
+begin
+    if(not eof(a))then
+        read(a, dato)
+    else
+        dato.codSuc := valor_alto;
+end;
+
+
+procedure totalizar(var ventas: tArchVtas; nombre_reporte: string);
+var
+    reporte: text;
+    act, aux: tVta;
+    ejemplares_isbn, ejemplares_autor, ejemplares_sucursal, ejemplares_total: longword;
+begin
+    assign(reporte, nombre_reporte); rewrite(reporte);
+    reset(ventas);
+
+    leer(ventas, act);
+    ejemplares_total := 0;
+    while(act.codSuc <> valor_alto)do begin
+        writeln(reporte, 'Código de Sucursal: ', aux.codSuc);
+        aux.codSuc := act.codSuc; ejemplares_sucursal := 0;
+        while(aux.codSuc = act.codSuc)do begin
+            writeln(reporte, '  Identificador del Autor: ', aux.idAutor);
+            aux.idAutor := act.idAutor; ejemplares_autor := 0;
+            while((aux.codSuc = act.codSuc) and (aux.idAutor = act.idAutor))do begin
+                aux.ISBN := act.ISBN; ejemplares_isbn := 0;
+                while((aux.codSuc = act.codSuc) and (aux.idAutor = act.idAutor) and (aux.ISBN = act.ISBN))do begin
+                    ejemplares_isbn := ejemplares_isbn + 1;
+                    leer(ventas, act);
+                end;
+                writeln(reporte, '      ISBN: ', aux.ISBN, '. Total de ejemplares vendidos del libro: ', ejemplares_isbn);
+                ejemplares_autor := ejemplares_autor + ejemplares_isbn;
+            end;
+            writeln(reporte, 'Total de ejemplares vendidos del autor: ', ejemplares_autor);
+            ejemplares_sucursal := ejemplares_sucursal + ejemplares_autor;
+        end;
+        writeln(reporte, 'Total de ejemplares vendidos en la sucursal: ', ejemplares_sucursal);
+        ejemplares_total := ejemplares_total + ejemplares_sucursal;
+    end;
+    writeln(reporte, 'TOTAL GENERAL DE EJEMPLARES VENDIDOS EN LA CADENA: ', ejemplares_total);
+
+    close(reporte); close(ventas);
+end;
+
+
+var
+    nombre: string;
+    ventas: tArchVtas;
+begin
+    writeln('Ingrese el nombre del archivo binario con las ventas: ');
+    readln(nombre);
+    assign(ventas, nombre);
+    writeln('Ingrese el nombre del archivo del reporte a generar: ');
+    readln(nombre);
+    totalizar(ventas, nombre);
+end;
