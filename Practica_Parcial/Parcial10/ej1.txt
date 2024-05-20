@@ -1,0 +1,107 @@
+Program ej1;
+
+const
+    N = 5;
+    valor_alto = 9999;
+
+type
+    producto_detalle_type = record
+        codigo: integer;
+        cant: integer;
+    end;
+
+    producto_maestro_type = record
+        codigo: integer;
+        nombre: string;
+        descripcion: string;
+        stock: integer;
+    end;
+
+    maestro_file = file of producto_maestro_type;
+    det_file = file of producto_detalle_type;
+
+    detalles_file = array[1..N] of det_file;
+    productos_detalle = array[1..N] of producto_detalle_type;
+
+
+
+procedure leer(var a: det_file; var dato: producto_detalle_type);
+begin
+    if(not eof(a))then
+        read(a, dato)
+    else
+        dato.codigo := valor_alto;
+end;
+
+
+procedure minimo(var dets: detalles_file; var resto: productos_detalle; var min: producto_detalle_type);
+var
+    i, min_i: integer;
+begin
+    min := resto[1];
+    min_i := 1;
+
+    for i:= 2 to N do begin
+        if(resto[i].codigo < min.codigo)then begin
+            min := resto[i];
+            min_i := i;
+        end;
+    end;
+
+    leer(dets[min_i], resto[min_i]);
+end;
+
+
+procedure actualizar_maestro(var maestro: maestro_file; var dets: detalles_file);
+var
+    reg_m: producto_maestro_type;
+    min, aux: producto_detalle_type;
+    resto: productos_detalle;
+    i: integer;
+begin
+    for i:= 1 to N do begin
+        reset(dets[i]); leer(dets[i], resto[i]);
+    end;
+    reset(maestro);
+
+    minimo(dets, resto, min);
+    while(min.codigo <> valor_alto)do begin
+        read(maestro, reg_m); // Leo pues se que el producto esta en el maestro
+        while(reg_m.codigo <> min.codigo)do
+            read(maestro, reg_m);
+        
+        aux := min;
+        while(min.codigo <> aux.codigo)do begin
+            if(reg_m.stock - min.cant >= 0)then begin
+                reg_m.stock := reg_m.stock - min.cant;
+            end;
+            minimo(dets, resto, min);
+        end;
+        seek(maestro, filepos(maestro)-1);
+        write(maestro, reg_m);
+    end;
+
+    for i:= 1 to N do
+        close(dets[i]);
+    close(maestro); 
+end;
+
+
+var
+    maestro: maestro_file;
+    dets: detalles_file;
+    i: integer;
+    nombre: string;
+begin
+    for i:= 1 to N do begin
+        writeln('Ingrese el nombre del detalle ', i, ': ');
+        readln(nombre);
+        assign(dets[i], nombre);
+    end;
+
+    writeln('Ingrese el nombre del archivo maestro: ');
+    readln(nombre);
+    assign(maestro, nombre);
+
+    actualizar_maestro(maestro, dets);
+end.
