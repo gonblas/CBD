@@ -101,39 +101,40 @@ begin
 end;
 
 
-procedure minimo(var det:detalle; var minimos:tipo_arrayRegDetalle; var min:tipo_regDetalle);
+procedure minimo(var det:detalle; var resto:tipo_arrayRegDetalle; var min:tipo_regDetalle);
 var
     posMin, i:integer;
 Begin
-    min:=minimos[1];
+    min:=resto[1];
     posMin:=1;
     for i:= 2 to N do begin
-        if(minimos[i].codigo < min.codigo)then begin
-                min:=minimos[i];
+        if(resto[i].codigo < min.codigo)then begin
+                min:=resto[i];
                 posMin:=i;
         end;
     end;
-    Leer(det[posMin],minimos[posMin]);
+    Leer(det[posMin],resto[posMin]);
 end;
 
 
 procedure ActualizarMaestro(var M:arch_maestro, var det:detalle);
 var
-    minimos:tipo_arrayRegDetalle; min:tipo_regDetalle; regM:maestro;
+    resto:tipo_arrayRegDetalle; min:tipo_regDetalle; regM:maestro;
 begin
     for i:=1 to N do begin //abro los N archivos detalle  
         reset(det[i]);
-        Leer(det[i],minimos[i]);
+        Leer(det[i],resto[i]);
     end;
-    reset(M); 
-    minimo(det,minimos,min);
+    reset(M);
+    regM.codigo:= ValorAlto; 
+    minimo(det,resto,min);
     while(min.codigo <> ValorAlto)do begin
         while(min.codigo <> regM.codigo)do begin //leo el maestro hasta encontrar el codigo del detalle minimo
             read(M,regM);
         end;
         while(regM.codigo = min.codigo) and (min.codigo <> ValorAlto)do begin //mientras el codigo del maestro sea igual al del detalle
             // actualizo los valores en el registro maestro
-            minimo(det,minimos,min);
+            minimo(det,resto,min);
         end;
         seek(M,filepos(M)-1);   //me posiciono en el registro a actualizar
         write(M,regM);          //actualizo el registro
@@ -181,7 +182,7 @@ begin
         reset(det[i]);
         Leer(det[i],minimos[i]);
     end;
-    reset(M); 
+    rewrite(M); 
     minimo(det,minimos,min);
     while(min.codigo <> ValorAlto)do begin
         regM.codigo:= min.codigo;

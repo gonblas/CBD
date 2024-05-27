@@ -1,0 +1,132 @@
+program ej1;
+
+const
+    N = 500;
+    valor_alto = 9999;
+
+
+type
+    localidad_type = record
+        codigo_prov, codigo_loc: integer;
+        votos_validos, votos_blanco, votos_anulados: integer;
+    end;
+
+    provincia_type = record
+        codigo_prov, votos_validos, votos_blanco, votos_anulados: integer;
+        nombre_prov: string;
+    end;
+
+    detalle_file = file of localidad_type;
+    maestro_file = file of provincia_type;
+
+    detalles = array[1..N] of detalle_file;
+    localidades_type = array[1..N] of localidad_type;
+
+
+procedure leer(var a:detalle_file; var dato: localidad_type);
+begin
+    if(not eof(a))then
+        read(a, dato)
+    else
+        dato.codigo_prov := valor_alto;
+end;
+
+procedure minimo(var dets: detalles; var resto: localidades_type; var min: localidad_type);
+var
+    i, min_i: integer;
+begin
+    min := resto[1];
+    min_i := 1;
+
+    for i:= 2 to N do begin
+        if((resto[i].codigo_prov < min.codigo_prov) or ((resto[i].codigo_prov = min.codigo_prov) and (resto[i].codigo_loc < min.codigo_loc)))then begin
+            min := resto[i];
+            min_i := i;
+        end;
+    end;
+
+    leer(deets[i], resto[i]);
+end;
+
+
+
+procedure actualizar_maestro(var maestro: maestro_file; var dets: detalles; var reporte: text);
+var
+    min, aux: localidad_type;
+    resto: localidades_type;
+    reg_m: provincia_type;
+    cant_validos, cant_anulados, cant_blanco: integer;
+    i: integer;
+begin
+    for i:= 1 to N do begin
+        reset(dets[i]); leer(dets[i], resto[i]);
+    end;
+    rewrite(reporte);
+    reset(maestro);
+    reg_m.codigo_prov := -1;
+
+    cant_validos := 0; cant_anulados := 0; cant_blanco := 0;
+    minimo(dets, resto, min);
+    while(min.codigo_prov <> valor_alto)do begin
+        //Supongo que existe la provincia en el maestro. En caso contrario de que mi suposicion este mal, tengo que preguntar por no pasarme del resto de provincias y llegar al final
+
+        while(reg_m.codigo_prov <> min.codigo_prov)do
+            read(maestro, reg_m);
+        
+        aux := min; // En aux se guardan la provincia actual y los votos de la misma
+        aux.votos_validos := 0; aux.votos_anulados := 0; aux.votos_blanco := 0;
+        while(aux.codigo_prov = min.codigo_prov)do begin
+            aux.votos_validos := aux.votos_validos + min.votos_validos;
+            aux.votos_anulados := aux.votos_anulados + min.votos_anulados;
+            aux.votos_blanco := aux.votos_blanco + min.votos_blanco;
+            minimo(dets, resto, min);
+        end;
+        // Actualizo el maestro
+        reg_m.votos_validos := reg_m.votos_validos + aux.votos_validos;
+        reg_m.votos_anulados := reg_m.votos_anulados + aux.votos_anulados;
+        reg_m.votos_blanco := reg_m.votos_blanco + aux.votos_blanco;
+        seek(maestro, filepos(maestro)-1);
+        write(maestro, reg_m);
+
+        cant_validos := cant_validos + aux.votos_validos;
+        cant_anulados := cant_anulados + aux.votos_anulados;
+        cant_blanco := cant_blanco + aux.votos_blanco;
+    end;
+
+    writeln(reporte, 'Cantidad de archivos procesados :', N);
+    writeln(reporte, 'Cantidad Total de votos: ', cant_validos + cant_anulados + cant_blanco);
+    writeln(reporte, 'Cantidad de votos válidos: ', cant_validos);
+    writeln(reporte, 'Cantidad de votos anulados: ', cant_anulados);
+    writeln(reporte, 'Cantidad de votos en blanco:', cant_blanco);
+
+    close(reporte);
+    for i:= 1 to N do
+        close(dets[i]);
+    close(maestro);
+end;
+
+
+
+
+var
+    maestro: maestro_file;
+    dets: detalles;
+    reporte: text;
+    i: integer;
+    nombre: string;
+begin
+    for i:= 1 to N do begin
+        writeln('Ingrese el nombre del archivo detalle, i, ': ');
+        readln(nombre);
+        assign(dets[i], nombre);
+    end;
+
+    writeln('Ingrese el nombre del archivo maestro: ');
+    readln(nombre);
+    assign(maestro, nombre);
+
+    assign(reporte, 'cantidad_votos_04_07_2023.txt');
+
+    actualizar_maestro(maestro, dets, reporte);
+end.
+
